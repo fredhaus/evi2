@@ -16,6 +16,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <strong>EVI 2.0</strong><br/>
+        ___________________
+        <br/><br/>
          <Switch>
             <Route
               exact

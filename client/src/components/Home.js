@@ -1,8 +1,58 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import { withRouter } from "react-router-dom";
 
-class About extends React.Component {
-  state = {};
+class Home extends React.Component {
+  state = {
+    NaamSchool: "",
+    Adres: "",
+    NaamInvuller: "",
+    Functie: "",
+    Postcode: "",
+    Email: "",
+    Plaats: "",
+    Telefoon: ""
+  };
+
+  // changeHandlerRadio = event => {
+  //   // console.log(this.state)
+  //   let id = event.target.id;
+  //   console.log(id);
+  //   this.setState({
+  //     AmbitiescenarioSchoolRadio: id
+  //   });
+  // };
+
+  changeHandler = event => {
+    let id = event.target.id;
+    let value = event.target.value;
+    this.setState({
+      [id]: value
+    });
+  };
+
+  submitHandler = event => {
+    event.preventDefault();
+    axios
+      .post("/api/datatransfer/homepush", this.state)
+      .then(response => {
+        console.log("Homepush Response", response.data);
+        this.props.updateUser(this.state.Email);
+        this.props.history.push("/step01");
+
+      })
+      .catch(error => {
+        console.log(error.response.data.message);
+        // this.setState({
+        // error: error.response.data.message
+        // })
+      });
+  };
+
+  consoleLog = () => {
+    console.log("STATE: ", this.state);
+  };
 
   render() {
     return (
@@ -25,7 +75,7 @@ class About extends React.Component {
             <div className="menu">
               <nav role="navigation" className="navigation-items w-nav-menu">
                 <a
-                  href="about.html"
+                  href="over.html"
                   className="navigation-item whitetext w-nav-link"
                 >
                   over ons
@@ -50,12 +100,19 @@ class About extends React.Component {
                 className="intro-content cc-homepage"
               >
                 <div className="intro-text">
-                  <div className="heading-jumbo">
-                    Doe mee aan de EVI&nbsp;2.0 vragenlijst
-                  </div>
-                  <div className="paragraph-bigger cc-bigger-white-light">
-                    Ontvang een gepersonaliseerd en geautomatiseerd
-                    bewustzijnsrapport met advies voor groei.
+                  <h1 className="heading-jumbo">Welkom bij EVI 2.0</h1>
+                  <div className="paragraph-bigger hero">
+                    Evi is een zelfevaluatie-instrument. <br />
+                    <br />
+                    Evi geeft inzicht in waar de school staat en brengt de
+                    ontwikkeling van het cultuuronderwijs in beeld. <br />
+                    <br />
+                    Evi is voor en van de school, die hiermee een eigen dossier
+                    opbouwt en haar eigen ontwikkeling inzichtelijk maakt.{" "}
+                    <br />
+                    <br />
+                    Evi helpt om achterom en vooruit te kijken, de koers te
+                    bepalen en die ook te varen.
                     <br />
                   </div>
                 </div>
@@ -83,31 +140,99 @@ class About extends React.Component {
                 kan Evi inzichtelijk maken in welk van de vier scenario’s je
                 school zich op dit moment bevindt, of de keuzes die je maakt
                 goed op elkaar zijn afgestemd en wat je school zou kunnen doen
-                om in een volgend scenario terecht te komen. Je kunt je
-                ervaringen bij Evi kwijt. Daarom willen we je vragen om zo
-                eerlijk en volledig mogelijk te antwoorden.
-                <br />
-                De vragenlijst is van en voor jou en je team. De vragenlijst is
-                niet anoniem, maar de gegevens worden vertrouwelijk behandeld en
-                zijn alleen toegankelijk voor de onderzoeker van de
-                Rijksuniversiteit Groningen.{" "}
+                om in een volgend scenario terecht te komen. <br />
               </p>
               <p>
-                Wij vragen je om de vragenlijst met twee personen in te vullen:
-                de cultuurcontactpersoon/icc’er/leerkracht en een directielid.
-                Dit neemt ongeveer één uur in beslag. De gegeven antwoorden
-                blijven opgeslagen, zodat je er samen met je collega en op
-                meerdere momenten aan kunt werken. Het is handig om relevante
-                documenten bij de hand te houden, zoals het schoolplan en
-                eventueel andere beleidsstukken. Als je wilt, kunt je deze
-                documenten aan het eind van de vragenlijst uploaden. Wanneer de
-                tweede invuller haar handtekening heeft gezet, zijn de
-                antwoorden definitief en kunnen er geen wijzigingen meer worden
-                doorgevoerd. De vragenlijst wordt volgend jaar opnieuw
-                opengesteld. <br />
-                Zo bouw je een dossier op waarin de ontwikkeling van het
-                cultuuronderwijs op jullie school zichtbaar wordt.
+                Je kunt je ervaringen bij Evi kwijt. Daarom willen we je vragen
+                om zo eerlijk en volledig mogelijk te antwoorden. Wij vragen je
+                om de vragenlijst in zijn geheel in te vullen. Het invullen van
+                de vragen neemt ongeveer één uur in beslag. Het is handig om
+                relevante documenten bij de hand te houden, zoals het schoolplan
+                en eventueel andere beleidsstukken. Wanneer je de vragen hebt
+                ingevuld en op 'terugkoppeling' hebt gedrukt, kunnen er geen
+                wijzigingen meer worden doorgevoerd.{" "}
               </p>
+            </div>
+          </div>
+        </div>
+        <div className="section topbottom-border">
+          <div className="container">
+            <h2>Instructies</h2>
+            <div className="intro-text-block">
+              <div>
+                <h5>Deel 1 – Vragenlijst</h5>
+                <p>
+                  De vragenlijst bevat vier onderwerpen, die in deze volgorde
+                  worden behandeld:
+                </p>
+                <ol className="list margin20">
+                  <li className="list-item">
+                    <p>Visie op cultuuronderwijs</p>
+                  </li>
+                  <li className="list-item">
+                    <p>Deskundigheid in cultuuronderwijs</p>
+                  </li>
+                  <li className="list-item">
+                    <p>Programma</p>
+                  </li>
+                  <li className="list-item">
+                    <p>Samenwerking</p>
+                  </li>
+                </ol>
+                <p>
+                  Elk onderwerp bevat open vragen, gesloten vragen en een
+                  scenariovraag. De open vragen hebben de opbouw:
+                  &nbsp;‘beschrijven’, ‘normeren van stellingen’, ‘beoordelen’
+                  en ‘verder kijken’. Met de beschrijvende vraag breng je de
+                  huidige situatie in kaart. Met de ‘normerende’ vraag geef je
+                  waardering aan een aantal stellingen passend bij het onderwerp
+                  en met de beoordelende vraag geef je aan of je tevreden bent
+                  over de situatie, wat goed ging en wat beter kan. De vraag
+                  waarin je verder kijkt, helpt je te bepalen hoe je school
+                  verder wil, en wat daarvoor nodig is. Bij de vraag over het
+                  scenario bepaal je in welk scenario je school zich op dit
+                  moment bevindt. Bij ‘Extra’ vind je extra uitleg en hulp bij
+                  het antwoorden.
+                </p>
+              </div>
+              <div>
+                <h5>Deel 2 – Terugkoppeling en advies</h5>
+                <p>
+                  Als alle vragen zijn ingevuld krijg je een 'EVI-Dossier'. Dit
+                  biedt een overzicht van:
+                </p>
+                <ul className="list margin20">
+                  <li className="list-item">
+                    <p>Antwoorden op de open vragen.</p>
+                  </li>
+                  <li className="list-item">
+                    <p>
+                      Een terugkoppeling van jullie score op de stellingen –
+                      doorvertaald naar een scenario - met daarbij een advies.
+                    </p>
+                  </li>
+                  <li className="list-item">
+                    <p>Een reflectie op het ontstane consistentie-beeld</p>
+                  </li>
+                  <li className="list-item">
+                    <p>
+                      En uiteindelijk een Evi-Scenario: een scenario score die
+                      aangeeft in welk scenario jullie school zich op dit moment
+                      (gemiddeld genomen) bevindt.
+                    </p>
+                  </li>
+                </ul>
+                <div className="note-box medium">
+                  <div className="paragraph-small note">
+                    <strong>LET OP:</strong> Met jouw deelname aan deze pilot
+                    geef je toestemming om je ingevulde gegevens te delen met de
+                    ontwikkelaars en de ondersteuningsinstelling die jouw school
+                    begeleidt. &nbsp;Deze gegevens worden uitsluitend gebruikt
+                    voor de evaluatie van de pilot van Evi 2.0. Je gegevens
+                    zullen vertrouwelijk worden behandeld. <br />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -131,205 +256,102 @@ class About extends React.Component {
                     className="form cta"
                   >
                     <div className="input-field">
-                      <label htmlFor="name" className="field-label">
+                      <label htmlFor="School" className="field-label">
                         Naam school
                       </label>
                       <input
                         type="text"
                         className="text-field w-input"
                         maxLength={256}
-                        name="name"
-                        data-name="Name"
-                        id="name"
+                        name="School"
+                        data-name="School"
+                        id="NaamSchool"
+                        onChange={this.changeHandler}
                       />
                     </div>
-                    <div className="form-radio-wrapper">
-                      <label htmlFor="email-2" className="field-label">
-                        Ambitiescenario school
-                      </label>
-                      <div className="form-radio-row">
-                        <label className="radio-button-field _2col home w-radio">
-                          <div className="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button home w-radio-input" />
-                          <input
-                            type="radio"
-                            data-name="home-ambitiescenario"
-                            defaultValue="Radio"
-                            name="home-ambitiescenario"
-                            id="radio"
-                            style={{
-                              opacity: 0,
-                              position: "absolute",
-                              zIndex: -1
-                            }}
-                          />
-                          <span className="checkbox-label w-form-label">1</span>
-                        </label>
-                        <label className="radio-button-field _2col home w-radio">
-                          <div className="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button home w-radio-input" />
-                          <input
-                            type="radio"
-                            data-name="home-ambitiescenario"
-                            defaultValue="Radio"
-                            name="home-ambitiescenario"
-                            id="radio"
-                            style={{
-                              opacity: 0,
-                              position: "absolute",
-                              zIndex: -1
-                            }}
-                          />
-                          <span className="checkbox-label w-form-label">2</span>
-                        </label>
-                        <label className="radio-button-field _2col home w-radio">
-                          <div className="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button home w-radio-input" />
-                          <input
-                            type="radio"
-                            data-name="home-ambitiescenario"
-                            defaultValue="Radio"
-                            name="home-ambitiescenario"
-                            id="radio"
-                            style={{
-                              opacity: 0,
-                              position: "absolute",
-                              zIndex: -1
-                            }}
-                          />
-                          <span className="checkbox-label w-form-label">3</span>
-                        </label>
-                        <label className="radio-button-field _2col home end w-radio">
-                          <div className="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button home w-radio-input" />
-                          <input
-                            type="radio"
-                            data-name="home-ambitiescenario"
-                            defaultValue="Radio"
-                            name="home-ambitiescenario"
-                            id="radio"
-                            style={{
-                              opacity: 0,
-                              position: "absolute",
-                              zIndex: -1
-                            }}
-                          />
-                          <span className="checkbox-label w-form-label">4</span>
-                        </label>
-                      </div>
-                    </div>
                     <div className="input-field">
-                      <label htmlFor="email" className="field-label">
-                        Adres
+                      <label htmlFor="Naam-2" className="field-label">
+                        Naam invuller
                       </label>
                       <input
-                        type="email"
-                        className="text-field w-input"
+                        type="text"
                         maxLength={256}
-                        name="email"
-                        data-name="Email"
-                        id="email"
-                        required
+                        name="Naam"
+                        data-name="Naam"
+                        id="NaamInvuller"
+                        className="text-field w-input"
+                        onChange={this.changeHandler}
                       />
                     </div>
                     <div className="input-field">
-                      <label htmlFor="name-5" className="field-label">
-                        Naam invuller 1
+                      <label htmlFor="Adres-2" className="field-label">
+                        Adres
                       </label>
                       <input
                         type="text"
                         className="text-field w-input"
                         maxLength={256}
-                        name="name-3"
-                        data-name="Name 3"
-                        id="name-3"
+                        name="Adres"
+                        data-name="Adres"
+                        id="Adres"
+                        onChange={this.changeHandler}
                       />
                     </div>
                     <div className="input-field">
-                      <label htmlFor="name-2" className="field-label">
+                      <label htmlFor="Functie-2" className="field-label">
+                        Functie invuller
+                      </label>
+                      <input
+                        type="text"
+                        className="text-field w-input"
+                        maxLength={256}
+                        name="Functie"
+                        data-name="Functie"
+                        id="Functie"
+                        onChange={this.changeHandler}
+                      />
+                    </div>
+                    <div className="input-field">
+                      <label htmlFor="Postcode-2" className="field-label">
                         Postcode
                       </label>
                       <input
                         type="text"
                         className="text-field w-input"
                         maxLength={256}
-                        name="name-2"
-                        data-name="Name 2"
-                        id="name-2"
+                        name="Postcode"
+                        data-name="Postcode"
+                        id="Postcode"
+                        onChange={this.changeHandler}
                       />
                     </div>
                     <div className="input-field">
-                      <label htmlFor="name-5" className="field-label">
-                        Functie invuller 1
+                      <label htmlFor="E-Mail-2" className="field-label">
+                        E-mail
                       </label>
                       <input
-                        type="text"
+                        type="email"
                         className="text-field w-input"
                         maxLength={256}
-                        name="name-2"
-                        data-name="Name 2"
-                        id="name-2"
+                        name="E-Mail"
+                        data-name="E-Mail"
+                        id="Email"
+                        required
+                        onChange={this.changeHandler}
                       />
                     </div>
                     <div className="input-field">
-                      <label htmlFor="name-3" className="field-label">
+                      <label htmlFor="Plaats-2" className="field-label">
                         Plaats
                       </label>
                       <input
                         type="text"
                         className="text-field w-input"
                         maxLength={256}
-                        name="name-3"
-                        data-name="Name 3"
-                        id="name-3"
-                      />
-                    </div>
-                    <div className="input-field">
-                      <label htmlFor="name-5" className="field-label">
-                        Naam invuller 2
-                      </label>
-                      <input
-                        type="text"
-                        className="text-field w-input"
-                        maxLength={256}
-                        name="name-3"
-                        data-name="Name 3"
-                        id="name-3"
-                      />
-                    </div>
-                    <div className="input-field">
-                      <label htmlFor="name-4" className="field-label">
-                        Telefoonnummer
-                      </label>
-                      <input
-                        type="tel"
-                        className="text-field w-input"
-                        maxLength={256}
-                        name="name-3"
-                        data-name="Name 3"
-                        id="name-3"
-                      />
-                    </div>
-                    <div className="input-field">
-                      <label htmlFor="name-5" className="field-label">
-                        Functie invuller 2
-                      </label>
-                      <input
-                        type="text"
-                        className="text-field w-input"
-                        maxLength={256}
-                        name="name-3"
-                        data-name="Name 3"
-                        id="name-3"
-                      />
-                    </div>
-                    <div className="input-field">
-                      <label htmlFor="name-5" className="field-label">
-                        Naam bovenschoolse stichting
-                      </label>
-                      <input
-                        type="text"
-                        className="text-field w-input"
-                        maxLength={256}
-                        name="name-4"
-                        data-name="Name 4"
-                        id="name-4"
+                        name="Plaats"
+                        data-name="Plaats"
+                        id="Plaats"
+                        onChange={this.changeHandler}
                       />
                     </div>
                     <input
@@ -339,16 +361,17 @@ class About extends React.Component {
                       className="hide w-button"
                     />
                     <div className="input-field">
-                      <label htmlFor="name-5" className="field-label">
-                        E-mail
+                      <label htmlFor="Telefoon" className="field-label">
+                        Telefoonnummer
                       </label>
                       <input
-                        type="email"
+                        type="tel"
                         className="text-field w-input"
                         maxLength={256}
-                        name="name-4"
-                        data-name="Name 4"
-                        id="name-4"
+                        name="Telefoon"
+                        data-name="Telefoon"
+                        id="Telefoon"
+                        onChange={this.changeHandler}
                       />
                     </div>
                   </form>
@@ -361,20 +384,29 @@ class About extends React.Component {
                     </div>
                   </div>
                 </div>
-                <a
-                  href="form/step-01.html"
-                  className="button cc-jumbo-button w-inline-block"
-                >
-                  <div>Volgende stap</div>
-                </a>
+                
+
+                  <Link
+                    to={"/step01"}
+                    className="button cc-jumbo-button w-inline-block"
+                    onClick={this.submitHandler}
+                  >
+                    <div>Volgende stap</div>
+                  </Link>
+                
               </div>
             </div>
           </div>
         </div>
-        {/* [if lte IE 9]><![endif] */}
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <button onClick={this.consoleLog}>ConsoleLog</button>
       </div>
     );
   }
 }
 
-export default withRouter(About);
+export default withRouter(Home);

@@ -5,6 +5,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
+import "typeface-roboto";
+import "./App.css";
+import "./normalize.css"
+import "./webflow.css"
+import "./evi-2-0.webflow.css"
+
 
 document.getElementById('root').innerText = 'Charging Up ...'
 

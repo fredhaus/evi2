@@ -11,7 +11,7 @@ const passport = require('passport');
 require('dotenv').config()
 
 
-var indexRouter = require('./routes/index');
+var dataRouter = require('./routes/datatransfer');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 
@@ -53,6 +53,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.use('/api/auth', authRouter);
+app.use('/api/datatransfer', dataRouter);
 app.use('/api/users', usersRouter);
 
 // catch 404 and forward to error handler

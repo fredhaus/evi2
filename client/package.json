@@ -11,6 +11,8 @@
     "cloudinary": "^1.17.0",
     "cloudinary-core": "^2.8.0",
     "current-device": "^0.10.0",
+    "html2canvas": "^1.0.0-rc.5",
+    "jspdf": "^1.5.3",
     "lodash": "^4.17.15",
     "notistack": "^0.9.7",
     "react": "^16.11.0",

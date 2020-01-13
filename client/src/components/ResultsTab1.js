@@ -70,7 +70,7 @@ class ResultsTab1 extends React.Component {
         std_1_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_1 >= 0.75) {
         std_1_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_1 >= 0.75) {
+      } else if (std_1 <= 0.75) {
         std_1_color = "rgba(116, 229, 156, 0.2)";
       }
 
@@ -80,7 +80,7 @@ class ResultsTab1 extends React.Component {
         std_2_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_2 >= 0.75) {
         std_2_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_2 >= 0.75) {
+      } else if (std_2 <= 0.75) {
         std_2_color = "rgba(116, 229, 156, 0.2)";
       }
 
@@ -90,7 +90,7 @@ class ResultsTab1 extends React.Component {
         std_3_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_3 >= 0.75) {
         std_3_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_3 >= 0.75) {
+      } else if (std_3 <= 0.75) {
         std_3_color = "rgba(116, 229, 156, 0.2)";
       }
       let std_4_color;
@@ -99,7 +99,7 @@ class ResultsTab1 extends React.Component {
         std_4_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_4 >= 0.75) {
         std_4_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_4 >= 0.75) {
+      } else if (std_4 <= 0.75) {
         std_4_color = "rgba(116, 229, 156, 0.2)";
       }
 
@@ -109,7 +109,7 @@ class ResultsTab1 extends React.Component {
         std_5_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_5 >= 0.75) {
         std_5_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_5 >= 0.75) {
+      } else if (std_5 <= 0.75) {
         std_5_color = "rgba(116, 229, 156, 0.2)";
       }
 
@@ -119,7 +119,7 @@ class ResultsTab1 extends React.Component {
         std_6_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_6 >= 0.75) {
         std_6_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_6 >= 0.75) {
+      } else if (std_6 <= 0.75) {
         std_6_color = "rgba(116, 229, 156, 0.2)";
       }
 
@@ -129,7 +129,7 @@ class ResultsTab1 extends React.Component {
         std_7_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_7 >= 0.75) {
         std_7_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_7 >= 0.75) {
+      } else if (std_7 <= 0.75) {
         std_7_color = "rgba(116, 229, 156, 0.2)";
       }
 
@@ -139,7 +139,7 @@ class ResultsTab1 extends React.Component {
         std_8_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_8 >= 0.75) {
         std_8_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_8 >= 0.75) {
+      } else if (std_8 <= 0.75) {
         std_8_color = "rgba(116, 229, 156, 0.2)";
       }
 
@@ -149,7 +149,7 @@ class ResultsTab1 extends React.Component {
         std_9_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_9 >= 0.75) {
         std_9_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_9 >= 0.75) {
+      } else if (std_9 <= 0.75) {
         std_9_color = "rgba(116, 229, 156, 0.2)";
       }
 
@@ -159,7 +159,7 @@ class ResultsTab1 extends React.Component {
         std_10_color = "rgba(235, 87, 87, 0.2)";
       } else if (std_10 >= 0.75) {
         std_10_color = "rgba(255, 196, 0, 0.2)";
-      } else if (std_10 >= 0.75) {
+      } else if (std_10 <= 0.75) {
         std_10_color = "rgba(116, 229, 156, 0.2)";
       }
 

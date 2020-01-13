@@ -1705,6 +1705,8 @@ class Step2 extends React.Component {
                       </div>
                     </div>
                   </div>
+                  {this.state._2_4_4 === "" ? "" : (
+                    this.state._2_4_4 === '_2_4_4_1' ? (
                   <div className="form-row">
                     <div className="form-row-header">
                       <div className="label answertype yes">Indien ja</div>
@@ -1738,6 +1740,7 @@ class Step2 extends React.Component {
                       </div>
                     </div>
                   </div>
+                    ):(""))}
                   </div>
                   ) : ( 
                   <div className="form-row end">

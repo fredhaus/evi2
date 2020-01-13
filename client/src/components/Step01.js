@@ -7,33 +7,42 @@ class Step1 extends React.Component {
   state = {
     user: this.props.user,
     theposition: window.pageYOffset,
-    _1_1_1: "",
-    _1_1_2: "",
-    _1_1_3: "",
-    _1_2_1: "",
-    _1_2_2: "",
-    _1_2_3: "",
-    _1_2_4: "",
-    _1_2_5: "",
-    _1_2_6: "",
-    _1_2_7: "",
-    _1_2_8: "",
-    _1_2_9: "",
-    _1_2_10: "",
-    _1_3: "",
-    _1_4_1: "",
-    _1_4_2: "",
-    _1_4_3: "",
-    _1_4_4: "",
-    _1_4_5: "",
-    _1_5: "",
-    _1_6: "",
+    // _1_1_1: "",
+    // _1_1_2: "",
+    // _1_1_3: "",
+    // _1_2_1: "",
+    // _1_2_2: "",
+    // _1_2_3: "",
+    // _1_2_4: "",
+    // _1_2_5: "",
+    // _1_2_6: "",
+    // _1_2_7: "",
+    // _1_2_8: "",
+    // _1_2_9: "",
+    // _1_2_10: "",
+    // _1_3: "",
+    // _1_4_1: "",
+    // _1_4_2: "",
+    // _1_4_3: "",
+    // _1_4_4: "",
+    // _1_4_5: "",
+    // _1_5: "",
+    // _1_6: "",
 
   };
+
   componentDidMount() {
     window.scrollTo(0, 0);
-    console.log(this.state.theposition);
+    axios
+      .post("/api/datatransfer/results", this.state)
+      .then(response => {
+        console.log("Results", response.data);
+        this.setState({
+          user: this.props.user, ...response.data[1]
+        });
+      })
   }
+
 
   changeHandler = event => {
     let id = event.target.id;
@@ -63,13 +72,14 @@ class Step1 extends React.Component {
     });
   };
 
-  submitHandler = event => {
+
+  submitHandler = (event, target) => {
     event.preventDefault();
     axios
       .post("/api/datatransfer/step01push", this.state)
       .then(response => {
         console.log("step01push Response", response.data);
-        this.props.history.push("/step02");
+        this.props.history.push(target);
       })
       .catch(error => {
         console.log(error.response.data.message);
@@ -106,44 +116,53 @@ class Step1 extends React.Component {
           className="navigation sub-nav w-nav"
         >
           <div className="navigation-wrap sub">
-            <a href="../index.html" className="logo-link w-nav-brand">
+          <Link
+              to={"/"}
+              onClick={event => {
+                this.submitHandler(event, "/");
+              }}
+              className="logo-link w-nav-brand"
+            >
               <img
                 src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
                 width={108}
                 alt=""
                 className="logo-image"
               />
-            </a>
+            </Link>
             <div className="menu">
               <nav role="navigation" className="navigation-items w-nav-menu">
-                <a
+                <div
                   href="../form/stap-01.html"
                   className="form-nav-wrapper w-inline-block w--current"
                 >
                   <div className="navigation-item form header">Step 1</div>
                   <div className="navigation-item form">Visie</div>
-                </a>
-                <a
+                </div>
+                <div
                   href="../form/stap-02-deskundigheid.html"
                   className="form-nav-wrapper w-inline-block"
+                  style={{opacity: "0.6"}}
                 >
                   <div className="navigation-item form header">Step 2</div>
                   <div className="navigation-item form">Deskundigheid</div>
-                </a>
-                <a
+                </div>
+                <div
                   href="../form/stap-03-programma.html"
                   className="form-nav-wrapper w-inline-block"
+                  style={{opacity: "0.6"}}
                 >
                   <div className="navigation-item form header">Step 3</div>
                   <div className="navigation-item form">Programma</div>
-                </a>
-                <a
+                </div>
+                <div
                   href="../form/stap-04-samenwerking.html"
                   className="form-nav-wrapper w-inline-block"
+                  style={{opacity: "0.6"}}
                 >
                   <div className="navigation-item form header">Step 4</div>
                   <div className="navigation-item form">Samenwerking</div>
-                </a>
+                </div>
               </nav>
               <div className="menu-button w-nav-button">
                 <img
@@ -155,7 +174,7 @@ class Step1 extends React.Component {
               </div>
             </div>
           </div>
-          <div className="nav-bg" />
+          <div className="nav-bg" style={{opacity: "1", boxShadow: "none"}}/>
         </div>
         <div className="section hero subpage steps">
           <div className="container">
@@ -212,7 +231,7 @@ class Step1 extends React.Component {
                           name="visie-op-cultuuronderwijs"
                           placeholder="Antwoord"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._1_1_1}
                         />
                       </form>
                       <div className="w-form-done">
@@ -312,7 +331,7 @@ class Step1 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._1_1_3}
                           onChange={this.changeHandler}
                         />
                       </form>
@@ -1538,7 +1557,7 @@ class Step1 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._1_3}
                           id="_1_3"
                           onChange={this.changeHandler}
                         />
@@ -1621,6 +1640,9 @@ class Step1 extends React.Component {
                       </div>
                     </div>
                   </div>
+                  {this.state._1_4_1 === "" ? "" : (
+                    this.state._1_4_1 === '_1_4_1_1' ? (
+                  <div>  
                   <div className="form-row">
                     <div className="form-row-header">
                       <div className="label answertype yes">Indien ja</div>
@@ -1640,7 +1662,7 @@ class Step1 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._1_4_2}
                           id="_1_4_2"
                           onChange={this.changeHandler}
                         />
@@ -1729,7 +1751,7 @@ class Step1 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._1_4_4}
                           id="_1_4_4"
                           onChange={this.changeHandler}
                         />
@@ -1744,6 +1766,9 @@ class Step1 extends React.Component {
                       </div>
                     </div>
                   </div>
+                  </div>
+                  ) : ( 
+                   
                   <div className="form-row end">
                     <div className="label answertype no">Indien nee</div>
                     <div className="form-row-header">
@@ -1767,7 +1792,7 @@ class Step1 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._1_4_5}
                           id="_1_4_5"
                           onChange={this.changeHandler}
                         />
@@ -1782,6 +1807,7 @@ class Step1 extends React.Component {
                       </div>
                     </div>
                   </div>
+                  ))}
                 </div>
                 <div className="form-section">
                   <div className="form-section-header">
@@ -1962,7 +1988,7 @@ class Step1 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._1_6}
                           id="_1_6"
                           onChange={this.changeHandler}
                         />
@@ -1980,14 +2006,24 @@ class Step1 extends React.Component {
                 </div>
                 <div className="cta-wrap form-bottom">
                   <div className="cta-btn-row first">
-
+{/* 
                     <Link
                     to={"/step02"}
                     className="button cc-jumbo-button w-inline-block"
                     onClick={this.submitHandler}
                   >
                     <div>Volgende stap</div>
-                  </Link>
+                  </Link> */}
+
+                  <Link
+                      to={"/step02"}
+                      className="button cc-jumbo-button w-inline-block"
+                      onClick={event => {
+                        this.submitHandler(event, "/step02");
+                      }}
+                    >
+                      <div>Volgende stap</div>
+                    </Link>
 
 
                   </div>
@@ -2002,6 +2038,7 @@ class Step1 extends React.Component {
         <br />
         <br />
         <button onClick={this.consoleLog}>ConsoleLog</button>
+        <button onClick={this.getResults}>RESULTS</button>
       </div>
     );
   }

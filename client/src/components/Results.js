@@ -73,7 +73,7 @@ class Step2 extends React.Component {
         <div className="mobilemessage">
           <div className="popup-block">
             <img
-              src="../images/moble-desktop.svg"
+              src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/moble-desktop_oaegjn.svg"
               alt=""
               className="step-icon popup-image"
             />
@@ -105,7 +105,7 @@ class Step2 extends React.Component {
           <div className="container">
             <div className="intro-text results">
               <img
-                src="../images/step1.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step1_uvi01u.svg"
                 alt=""
                 className="step-icon hide"
               />
@@ -119,7 +119,7 @@ class Step2 extends React.Component {
               <div className="note-box results">
                 <div className="note-box-results-wrapper">
                   <img
-                    src="../images/email-small.svg"
+                    src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862223/evi2_120120/email-small_vtqbzr.svg"
                     alt=""
                     className="results-note-icon"
                   />

@@ -10,7 +10,7 @@ class ResultsTab3 extends React.Component {
       <div className="container marginbottom80">
         <div className="intro-text results">
           <img
-            src="../images/step1.svg"
+            src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step1_uvi01u.svg"
             alt=""
             className="step-icon hide"
           />
@@ -126,7 +126,7 @@ class ResultsTab3 extends React.Component {
               </div>
               <div className="scenario-wrapper-static">
                 <img
-                  src="../images/scenario-arrow-small.svg"
+                  src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/scenario-arrow-small_wn2ou9.svg"
                   alt=""
                   className="step-icon small"
                 />
@@ -176,7 +176,7 @@ class ResultsTab3 extends React.Component {
               </div>
               <div className="scenario-wrapper-static">
                 <img
-                  src="../images/scenario-arrow-small.svg"
+                  src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/scenario-arrow-small_wn2ou9.svg"
                   alt=""
                   className="step-icon small"
                 />
@@ -240,7 +240,7 @@ class ResultsTab3 extends React.Component {
               </div>
               <div className="scenario-wrapper-static">
                 <img
-                  src="../images/scenario-arrow-small.svg"
+                  src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/scenario-arrow-small_wn2ou9.svg"
                   alt=""
                   className="step-icon small"
                 />
@@ -300,7 +300,7 @@ class ResultsTab3 extends React.Component {
               </div>
               <div className="scenario-wrapper-static">
                 <img
-                  src="../images/scenario-arrow-small.svg"
+                  src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/scenario-arrow-small_wn2ou9.svg"
                   alt=""
                   className="step-icon small"
                 />

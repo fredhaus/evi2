@@ -9,7 +9,7 @@ class ResultsTab1 extends React.Component {
       <div datatab="Tab 1" className="tab-pane w-tab-pane w--tab-active">
         <div className="container marginbottom80">
           <div className="intro-text results">
-            <img src="../images/step1.svg" alt="" className="step-icon hide" />
+            <img src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1_boejhz.svg" alt="" className="step-icon hide" />
             <div className="details-wrap">
               <h1>Totale analyse</h1>
             </div>
@@ -40,7 +40,7 @@ class ResultsTab1 extends React.Component {
                   <div className="table-empty-cell" />
                   <div className="table-cell header">
                     <img
-                      src="../images/step1-small.svg"
+                      src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
                       alt=""
                       className="step-icon small header"
                     />
@@ -48,7 +48,7 @@ class ResultsTab1 extends React.Component {
                   </div>
                   <div className="table-cell header">
                     <img
-                      src="../images/step2-small.svg"
+                      src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
                       alt=""
                       className="step-icon small header"
                     />
@@ -56,7 +56,7 @@ class ResultsTab1 extends React.Component {
                   </div>
                   <div className="table-cell header">
                     <img
-                      src="../images/step3-small.svg"
+                      src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
                       alt=""
                       className="step-icon small header"
                     />
@@ -64,7 +64,7 @@ class ResultsTab1 extends React.Component {
                   </div>
                   <div className="table-cell header">
                     <img
-                      src="../images/step4-small.svg"
+                      src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
                       alt=""
                       className="step-icon small header"
                     />
@@ -705,7 +705,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step1-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -718,7 +718,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step2-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -732,7 +732,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step3-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -747,7 +747,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step4-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -766,7 +766,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step1-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -784,7 +784,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step2-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -800,7 +800,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step3-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -816,7 +816,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step4-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -836,7 +836,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step1-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -851,7 +851,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step2-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -870,7 +870,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step3-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -887,7 +887,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step4-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -908,7 +908,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step1-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -926,7 +926,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step2-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -945,7 +945,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step3-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
                 alt=""
                 className="step-icon small"
               />
@@ -965,7 +965,7 @@ class ResultsTab1 extends React.Component {
             </div>
             <div className="scenario-wrapper-static">
               <img
-                src="../images/step4-small.svg"
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
                 alt=""
                 className="step-icon small"
               />

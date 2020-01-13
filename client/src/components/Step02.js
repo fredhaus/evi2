@@ -7,32 +7,38 @@ class Step2 extends React.Component {
   state = {
     user: this.props.user,
     theposition: window.pageYOffset,
-    _2_1: "",
-    _2_2_1: "",
-    _2_2_2: "",
-    _2_2_3: "",
-    _2_2_4: "",
-    _2_2_5: "",
-    _2_2_6: "",
-    _2_2_7: "",
-    _2_2_8: "",
-    _2_2_9: "",
-    _2_2_10: "",
-    _2_3: "",
-    _2_4_1: "",
-    _2_4_2: "",
-    _2_4_3: "",
-    _2_4_4: "",
-    _2_4_5: "",
-    _2_4_6: "",
-    _2_5: "",
-    _2_6: ""
-
-
+    // _2_1: "",
+    // _2_2_1: "",
+    // _2_2_2: "",
+    // _2_2_3: "",
+    // _2_2_4: "",
+    // _2_2_5: "",
+    // _2_2_6: "",
+    // _2_2_7: "",
+    // _2_2_8: "",
+    // _2_2_9: "",
+    // _2_2_10: "",
+    // _2_3: "",
+    // _2_4_1: "",
+    // _2_4_2: "",
+    // _2_4_3: "",
+    // _2_4_4: "",
+    // _2_4_5: "",
+    // _2_4_6: "",
+    // _2_5: "",
+    // _2_6: ""
   };
+
   componentDidMount() {
     window.scrollTo(0, 0);
-    console.log(this.state.theposition);
+    axios
+      .post("/api/datatransfer/results", this.state)
+      .then(response => {
+        console.log("Results", response.data);
+        this.setState({
+          user: this.props.user, ...response.data[2]
+        });
+      })
   }
 
   changeHandler = event => {
@@ -55,21 +61,37 @@ class Step2 extends React.Component {
   changeHandlerRadio = event => {
     // console.log(this.state)
     let id = event.target.id;
-    let idArr = id.split("_")
-    idArr.pop()
-    let mainId = idArr.join("_")
+    let idArr = id.split("_");
+    idArr.pop();
+    let mainId = idArr.join("_");
     this.setState({
       [mainId]: id
     });
   };
 
-  submitHandler = event => {
+  // submitHandler = (event, target) => {
+  //   event.preventDefault();
+  //   axios
+  //     .post("/api/datatransfer/step02push", this.state)
+  //     .then(response => {
+  //       console.log("step02push Response", response.data);
+  //       this.props.history.push("/step03");
+  //     })
+  //     .catch(error => {
+  //       console.log(error.response.data.message);
+  //       // this.setState({
+  //       // error: error.response.data.message
+  //       // })
+  //     });
+  // };
+
+  submitHandler = (event, target) => {
     event.preventDefault();
     axios
       .post("/api/datatransfer/step02push", this.state)
       .then(response => {
         console.log("step02push Response", response.data);
-        this.props.history.push("/step03");
+        this.props.history.push(target);
       })
       .catch(error => {
         console.log(error.response.data.message);
@@ -106,44 +128,56 @@ class Step2 extends React.Component {
           className="navigation sub-nav w-nav"
         >
           <div className="navigation-wrap sub">
-            <a href="../index.html" className="logo-link w-nav-brand">
+            <Link
+              to={"/"}
+              onClick={event => {
+                this.submitHandler(event, "/");
+              }}
+              className="logo-link w-nav-brand"
+            >
               <img
                 src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
                 width={108}
                 alt=""
                 className="logo-image"
               />
-            </a>
+            </Link>
             <div className="menu">
               <nav role="navigation" className="navigation-items w-nav-menu">
-                <a
+                <div
                   href="../form/stap-01.html"
                   className="form-nav-wrapper w-inline-block"
+                  style={{ opacity: "0.6" }}
                 >
                   <div className="navigation-item form header">Step 1</div>
                   <div className="navigation-item form">Visie</div>
-                </a>
-                <a
+                </div>
+
+                <div
                   href="../form/stap-02-deskundigheid.html"
                   className="form-nav-wrapper w-inline-block w--current"
                 >
                   <div className="navigation-item form header">Step 2</div>
                   <div className="navigation-item form">Deskundigheid</div>
-                </a>
-                <a
+                </div>
+
+                <div
                   href="../form/stap-03-programma.html"
                   className="form-nav-wrapper w-inline-block"
+                  style={{ opacity: "0.6" }}
                 >
                   <div className="navigation-item form header">Step 3</div>
                   <div className="navigation-item form">Programma</div>
-                </a>
-                <a
+                </div>
+
+                <div
                   href="../form/stap-04-samenwerking.html"
                   className="form-nav-wrapper w-inline-block"
+                  style={{ opacity: "0.6" }}
                 >
                   <div className="navigation-item form header">Step 4</div>
                   <div className="navigation-item form">Samenwerking</div>
-                </a>
+                </div>
               </nav>
               <div className="menu-button w-nav-button">
                 <img
@@ -155,12 +189,16 @@ class Step2 extends React.Component {
               </div>
             </div>
           </div>
-          <div className="nav-bg" />
+          <div className="nav-bg" style={{opacity: "1", boxShadow: "none"}}/>
         </div>
         <div className="section hero subpage steps">
           <div className="container">
             <div className="form-description">
-              <img src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2_md17pr.svg" alt="" className="step-icon" />
+              <img
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2_md17pr.svg"
+                alt=""
+                className="step-icon"
+              />
               <div className="details-wrap">
                 <h1 className="heading-jumbo step-headline">2</h1>
                 <h1 className="step-headline-h2">
@@ -244,7 +282,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._2_1}
                           onChange={this.changeHandler}
                           id="_2_1"
                         />
@@ -316,7 +354,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_1_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_1 === '_2_2_1_1'}  
+                              checked={this.state._2_2_1 === "_2_2_1_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -334,7 +372,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_1_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_1 === '_2_2_1_2'}  
+                              checked={this.state._2_2_1 === "_2_2_1_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -352,7 +390,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_1_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_1 === '_2_2_1_3'}  
+                              checked={this.state._2_2_1 === "_2_2_1_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -370,7 +408,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_1_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_1 === '_2_2_1_4'}  
+                              checked={this.state._2_2_1 === "_2_2_1_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -388,7 +426,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_1_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_1 === '_2_2_1_5'} 
+                              checked={this.state._2_2_1 === "_2_2_1_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -427,7 +465,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_2_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_2 === '_2_2_2_1'} 
+                              checked={this.state._2_2_2 === "_2_2_2_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -445,7 +483,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_2_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_2 === '_2_2_2_2'} 
+                              checked={this.state._2_2_2 === "_2_2_2_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -463,7 +501,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_2_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_2 === '_2_2_2_3'} 
+                              checked={this.state._2_2_2 === "_2_2_2_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -481,7 +519,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_2_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_2 === '_2_2_2_4'} 
+                              checked={this.state._2_2_2 === "_2_2_2_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -499,7 +537,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_2_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_2 === '_2_2_2_5'}
+                              checked={this.state._2_2_2 === "_2_2_2_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -538,7 +576,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_3_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_3 === '_2_2_3_1'}
+                              checked={this.state._2_2_3 === "_2_2_3_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -556,7 +594,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_3_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_3 === '_2_2_3_2'}
+                              checked={this.state._2_2_3 === "_2_2_3_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -574,7 +612,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_3_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_3 === '_2_2_3_3'}
+                              checked={this.state._2_2_3 === "_2_2_3_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -592,7 +630,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_3_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_3 === '_2_2_3_4'}
+                              checked={this.state._2_2_3 === "_2_2_3_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -610,7 +648,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_3_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_3 === '_2_2_3_5'}
+                              checked={this.state._2_2_3 === "_2_2_3_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -649,7 +687,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_4_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_4 === '_2_2_4_1'}
+                              checked={this.state._2_2_4 === "_2_2_4_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -667,7 +705,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_4_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_4 === '_2_2_4_2'}
+                              checked={this.state._2_2_4 === "_2_2_4_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -685,7 +723,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_4_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_4 === '_2_2_4_3'}
+                              checked={this.state._2_2_4 === "_2_2_4_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -704,7 +742,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_4_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_4 === '_2_2_4_4'}
+                              checked={this.state._2_2_4 === "_2_2_4_4"}
                             />
                             <span
                               htmlFor="node"
@@ -725,7 +763,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_4_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_4 === '_2_2_4_5'}
+                              checked={this.state._2_2_4 === "_2_2_4_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -765,7 +803,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_5_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_5 === '_2_2_5_1'}
+                              checked={this.state._2_2_5 === "_2_2_5_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -783,7 +821,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_5_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_5 === '_2_2_5_2'}
+                              checked={this.state._2_2_5 === "_2_2_5_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -801,7 +839,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_5_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_5 === '_2_2_5_3'}
+                              checked={this.state._2_2_5 === "_2_2_5_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -819,7 +857,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_5_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_5 === '_2_2_5_4'}
+                              checked={this.state._2_2_5 === "_2_2_5_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -837,7 +875,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_5_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_5 === '_2_2_5_5'}
+                              checked={this.state._2_2_5 === "_2_2_5_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -878,7 +916,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_6_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_6 === '_2_2_6_1'}
+                              checked={this.state._2_2_6 === "_2_2_6_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -896,7 +934,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_6_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_6 === '_2_2_6_2'}
+                              checked={this.state._2_2_6 === "_2_2_6_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -914,7 +952,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_6_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_6 === '_2_2_6_3'}
+                              checked={this.state._2_2_6 === "_2_2_6_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -932,7 +970,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_6_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_6 === '_2_2_6_4'}
+                              checked={this.state._2_2_6 === "_2_2_6_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -950,7 +988,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_6_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_6 === '_2_2_6_5'}
+                              checked={this.state._2_2_6 === "_2_2_6_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -989,7 +1027,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_7_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_7 === '_2_2_7_1'}
+                              checked={this.state._2_2_7 === "_2_2_7_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1007,7 +1045,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_7_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_7 === '_2_2_7_2'}
+                              checked={this.state._2_2_7 === "_2_2_7_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1026,7 +1064,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_7_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_7 === '_2_2_7_3'}
+                              checked={this.state._2_2_7 === "_2_2_7_3"}
                             />
                             <span
                               htmlFor="node-3"
@@ -1047,7 +1085,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_7_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_7 === '_2_2_7_4'}
+                              checked={this.state._2_2_7 === "_2_2_7_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1066,7 +1104,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_7_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_7 === '_2_2_7_5'}
+                              checked={this.state._2_2_7 === "_2_2_7_5"}
                             />
                             <span
                               htmlFor="node-2"
@@ -1108,7 +1146,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_8_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_8 === '_2_2_8_1'}
+                              checked={this.state._2_2_8 === "_2_2_8_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1126,7 +1164,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_8_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_8 === '_2_2_8_2'}
+                              checked={this.state._2_2_8 === "_2_2_8_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1144,7 +1182,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_8_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_8 === '_2_2_8_3'}
+                              checked={this.state._2_2_8 === "_2_2_8_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1162,7 +1200,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_8_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_8 === '_2_2_8_4'}
+                              checked={this.state._2_2_8 === "_2_2_8_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1180,7 +1218,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_8_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_8 === '_2_2_8_5'}
+                              checked={this.state._2_2_8 === "_2_2_8_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1220,7 +1258,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_9_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_9 === '_2_2_9_1'}
+                              checked={this.state._2_2_9 === "_2_2_9_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1238,7 +1276,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_9_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_9 === '_2_2_9_2'}
+                              checked={this.state._2_2_9 === "_2_2_9_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1256,7 +1294,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_9_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_9 === '_2_2_9_3'}
+                              checked={this.state._2_2_9 === "_2_2_9_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1274,7 +1312,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_9_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_9 === '_2_2_9_4'}
+                              checked={this.state._2_2_9 === "_2_2_9_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1292,7 +1330,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_9_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_9 === '_2_2_9_5'}
+                              checked={this.state._2_2_9 === "_2_2_9_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1332,7 +1370,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_10_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_10 === '_2_2_10_1'}
+                              checked={this.state._2_2_10 === "_2_2_10_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1350,7 +1388,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_10_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_10 === '_2_2_10_2'}
+                              checked={this.state._2_2_10 === "_2_2_10_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1368,7 +1406,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_10_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_10 === '_2_2_10_3'}
+                              checked={this.state._2_2_10 === "_2_2_10_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1386,7 +1424,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_10_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_10 === '_2_2_10_4'}
+                              checked={this.state._2_2_10 === "_2_2_10_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1404,7 +1442,7 @@ class Step2 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_2_2_10_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._2_2_10 === '_2_2_10_5'}
+                              checked={this.state._2_2_10 === "_2_2_10_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1464,10 +1502,10 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._2_3}
                           onChange={this.changeHandler}
                           id="_2_3"
-                          />
+                        />
                       </form>
                       <div className="w-form-done">
                         <div>Thank you! Your submission has been received!</div>
@@ -1511,7 +1549,7 @@ class Step2 extends React.Component {
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_2_4_1_1"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._2_4_1 === '_2_4_1_1'} 
+                            checked={this.state._2_4_1 === "_2_4_1_1"}
                           />
                           <span className="checkbox-label w-form-label">
                             Ja
@@ -1527,7 +1565,7 @@ class Step2 extends React.Component {
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_2_4_1_2"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._2_4_1 === '_2_4_1_2'} 
+                            checked={this.state._2_4_1 === "_2_4_1_2"}
                           />
                           <span className="checkbox-label w-form-label">
                             Nee
@@ -1544,6 +1582,9 @@ class Step2 extends React.Component {
                       </div>
                     </div>
                   </div>
+                  {this.state._2_4_1 === "" ? "" : (
+                    this.state._2_4_1 === '_2_4_1_1' ? (
+                      <div>
                   <div className="form-row">
                     <div className="form-row-header">
                       <div className="label answertype yes">Indien ja</div>
@@ -1562,7 +1603,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._2_4_2}
                           onChange={this.changeHandler}
                           id="_2_4_2"
                         />
@@ -1596,7 +1637,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._2_4_3}
                           onChange={this.changeHandler}
                           id="_2_4_3"
                         />
@@ -1632,7 +1673,7 @@ class Step2 extends React.Component {
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_2_4_4_1"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._2_4_4 === '_2_4_4_1'} 
+                            checked={this.state._2_4_4 === "_2_4_4_1"}
                           />
                           <span className="checkbox-label w-form-label">
                             Ja
@@ -1647,7 +1688,7 @@ class Step2 extends React.Component {
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_2_4_4_2"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._2_4_4 === '_2_4_4_2'} 
+                            checked={this.state._2_4_4 === "_2_4_4_2"}
                           />
                           <span className="checkbox-label w-form-label">
                             Nee
@@ -1682,7 +1723,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._2_4_5}
                           onChange={this.changeHandler}
                           id="_2_4_5"
                         />
@@ -1697,6 +1738,8 @@ class Step2 extends React.Component {
                       </div>
                     </div>
                   </div>
+                  </div>
+                  ) : ( 
                   <div className="form-row end">
                     <div className="form-row-header">
                       <div className="label answertype no">Indien nee</div>
@@ -1719,7 +1762,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._2_4_6}
                           onChange={this.changeHandler}
                           id="_2_4_6"
                         />
@@ -1734,6 +1777,7 @@ class Step2 extends React.Component {
                       </div>
                     </div>
                   </div>
+                  ))}
                 </div>
                 <div className="form-section">
                   <div className="form-section-header">
@@ -1765,7 +1809,7 @@ class Step2 extends React.Component {
                             className="w-form-formradioinput radio-button scenario w-radio-input"
                             id="_2_5_1"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._2_5 === '_2_5_1'}
+                            checked={this.state._2_5 === "_2_5_1"}
                           />
                           <div className="form-row-header scenario-header">
                             <h4 className="heading">Scenario 1</h4>
@@ -1792,7 +1836,7 @@ class Step2 extends React.Component {
                             className="w-form-formradioinput radio-button scenario w-radio-input"
                             id="_2_5_2"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._2_5 === '_2_5_2'}
+                            checked={this.state._2_5 === "_2_5_2"}
                           />
                           <div className="form-row-header scenario-header">
                             <h4>Scenario 2</h4>
@@ -1821,7 +1865,7 @@ class Step2 extends React.Component {
                             className="w-form-formradioinput radio-button scenario w-radio-input"
                             id="_2_5_3"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._2_5 === '_2_5_3'}
+                            checked={this.state._2_5 === "_2_5_3"}
                           />
                           <div className="form-row-header scenario-header">
                             <h4>Scenario 3</h4>
@@ -1854,7 +1898,7 @@ class Step2 extends React.Component {
                             className="w-form-formradioinput radio-button scenario w-radio-input"
                             id="_2_5_4"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._2_5 === '_2_5_4'}
+                            checked={this.state._2_5 === "_2_5_4"}
                           />
                           <div className="form-row-header scenario-header">
                             <h4>Scenario 4</h4>
@@ -1916,7 +1960,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._2_6}
                           onChange={this.changeHandler}
                           id="_2_6"
                         />
@@ -1934,24 +1978,29 @@ class Step2 extends React.Component {
                 </div>
                 <div className="cta-wrap form-bottom">
                   <div className="cta-btn-row div-block">
-                  <Link
-                    to={"/step01"}
-                    className="link-block w-inline-block"
-                  >
+                    <Link
+                      to={"/step01"}
+                      className="link-block w-inline-block"
+                      onClick={event => {
+                        this.submitHandler(event, "/step01");
+                      }}
+                    >
                       <img
                         src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/small-arrowleft_kzja7a.svg"
                         alt=""
                         className="icon-arrow"
                       />
                       <div>Vorige stap</div>
-                      </Link>
+                    </Link>
                     <Link
-                    to={"/step03"}
-                    className="button cc-jumbo-button w-inline-block"
-                    onClick={this.submitHandler}
-                  >
-                    <div>Volgende stap</div>
-                  </Link>
+                      to={"/step03"}
+                      className="button cc-jumbo-button w-inline-block"
+                      onClick={event => {
+                        this.submitHandler(event, "/step03");
+                      }}
+                    >
+                      <div>Volgende stap</div>
+                    </Link>
                   </div>
                 </div>
               </div>

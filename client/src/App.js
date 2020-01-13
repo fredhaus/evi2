@@ -40,7 +40,7 @@ class App extends React.Component {
             path="/"
             render={() => (
               <div>
-                <Home updateUser={this.updateUser}></Home>
+                <Home user={this.state.user} updateUser={this.updateUser}></Home>
               </div>
             )}
           ></Route>

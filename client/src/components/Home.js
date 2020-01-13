@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 
 class Home extends React.Component {
   state = {
+    user: this.props.user,
     NaamSchool: "",
     Adres: "",
     NaamInvuller: "",
@@ -15,15 +16,18 @@ class Home extends React.Component {
     Telefoon: ""
   };
 
-  // changeHandlerRadio = event => {
-  //   // console.log(this.state)
-  //   let id = event.target.id;
-  //   console.log(id);
-  //   this.setState({
-  //     AmbitiescenarioSchoolRadio: id
-  //   });
-  // };
-
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    axios
+      .post("/api/datatransfer/results", this.state)
+      .then(response => {
+        
+        console.log("Results", response.data);
+        this.setState({
+          user: this.props.user, ...response.data[3]
+        });
+      })
+  }
   changeHandler = event => {
     let id = event.target.id;
     let value = event.target.value;

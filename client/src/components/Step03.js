@@ -448,11 +448,8 @@ class Step2 extends React.Component {
                       </div>
                     </div>
                   </div>
-                  ) : (""))}
-                  </div>
-                  ) : ( 
-                    <div>
-                  <div className="form-row">
+                  ) : (
+                    <div className="form-row">
                     <div className="form-row-header">
                       <div className="label answertype no">Indien Nee</div>
                       <h4>
@@ -500,6 +497,10 @@ class Step2 extends React.Component {
                       </div>
                     </div>
                   </div>
+                  ))}
+                  </div>
+                  ) : ( 
+                    <div>
                   <div className="form-row">
                     <div className="form-row-header">
                       <div className="label answertype no">Indien Nee</div>

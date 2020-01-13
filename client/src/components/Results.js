@@ -16,7 +16,23 @@ class Step2 extends React.Component {
   };
   componentDidMount() {
     window.scrollTo(0, 0);
-    console.log(this.state.theposition);
+    // axios
+    // .post("/api/datatransfer/results", this.state)
+    // .then(response => {
+    //   console.log("Results response", response.data);
+    //   let nr1 = response.data[1]
+    //   console.log(nr1)
+    //   this.setState({
+    //     user: this.props.user, 
+    //     tab: "1",
+    //     result1: response.data[1],
+    //     result2: response.data[2],
+    //     result3: response.data[3],
+    //     result4: response.data[4],
+    //     results: response.data,
+    //     nr1: nr1
+    //   });
+    // })
   }
 
   changeHandler = event => {
@@ -245,7 +261,8 @@ class Step2 extends React.Component {
 
               </div>
               <div className="w-tab-content">
-                {this.state.tab === "1" ? <ResultsTab1 /> : ""}
+                {/* {this.state.tab === "1" ? <ResultsTab1 allResults="moin"/> : ""}  */}
+                {this.state.tab === "1" ? <ResultsTab1 user={this.state.user}/> : ""} 
                 {this.state.tab === "2" ? <ResultsTab2 /> : ""}
                 {this.state.tab === "3" ? <ResultsTab3 /> : ""}
                 {this.state.tab === "4" ? <ResultsTab4 /> : ""}

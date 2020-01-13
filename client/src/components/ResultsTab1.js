@@ -1,15 +1,259 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-
+import axios from "axios";
+import { std } from "mathjs";
 class ResultsTab1 extends React.Component {
-  state = {};
+  state = {
+    user: this.props.user
+  };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    axios.post("/api/datatransfer/results", this.state).then(response => {
+      console.log("Results Tab1", response.data);
+
+      let _1_2_1 = parseInt(response.data[1]._1_2_1.split("_").pop());
+      let _1_2_2 = parseInt(response.data[1]._1_2_2.split("_").pop());
+      let _1_2_3 = parseInt(response.data[1]._1_2_3.split("_").pop());
+      let _1_2_4 = parseInt(response.data[1]._1_2_4.split("_").pop());
+      let _1_2_5 = parseInt(response.data[1]._1_2_5.split("_").pop());
+      let _1_2_6 = parseInt(response.data[1]._1_2_6.split("_").pop());
+      let _1_2_7 = parseInt(response.data[1]._1_2_7.split("_").pop());
+      let _1_2_8 = parseInt(response.data[1]._1_2_8.split("_").pop());
+      let _1_2_9 = parseInt(response.data[1]._1_2_9.split("_").pop());
+      let _1_2_10 = parseInt(response.data[1]._1_2_10.split("_").pop());
+      let _2_2_1 = parseInt(response.data[2]._2_2_1.split("_").pop());
+      let _2_2_2 = parseInt(response.data[2]._2_2_2.split("_").pop());
+      let _2_2_3 = parseInt(response.data[2]._2_2_3.split("_").pop());
+      let _2_2_4 = parseInt(response.data[2]._2_2_4.split("_").pop());
+      let _2_2_5 = parseInt(response.data[2]._2_2_5.split("_").pop());
+      let _2_2_6 = parseInt(response.data[2]._2_2_6.split("_").pop());
+      let _2_2_7 = parseInt(response.data[2]._2_2_7.split("_").pop());
+      let _2_2_8 = parseInt(response.data[2]._2_2_8.split("_").pop());
+      let _2_2_9 = parseInt(response.data[2]._2_2_9.split("_").pop());
+      let _2_2_10 = parseInt(response.data[2]._2_2_10.split("_").pop());
+      let _3_2_1 = parseInt(response.data[3]._3_2_1.split("_").pop());
+      let _3_2_2 = parseInt(response.data[3]._3_2_2.split("_").pop());
+      let _3_2_3 = parseInt(response.data[3]._3_2_3.split("_").pop());
+      let _3_2_4 = parseInt(response.data[3]._3_2_4.split("_").pop());
+      let _3_2_5 = parseInt(response.data[3]._3_2_5.split("_").pop());
+      let _3_2_6 = parseInt(response.data[3]._3_2_6.split("_").pop());
+      let _3_2_7 = parseInt(response.data[3]._3_2_7.split("_").pop());
+      let _3_2_8 = parseInt(response.data[3]._3_2_8.split("_").pop());
+      let _3_2_9 = parseInt(response.data[3]._3_2_9.split("_").pop());
+      let _3_2_10 = parseInt(response.data[3]._3_2_10.split("_").pop());
+      let _4_2_1 = parseInt(response.data[4]._4_2_1.split("_").pop());
+      let _4_2_2 = parseInt(response.data[4]._4_2_2.split("_").pop());
+      let _4_2_3 = parseInt(response.data[4]._4_2_3.split("_").pop());
+      let _4_2_4 = parseInt(response.data[4]._4_2_4.split("_").pop());
+      let _4_2_5 = parseInt(response.data[4]._4_2_5.split("_").pop());
+      let _4_2_6 = parseInt(response.data[4]._4_2_6.split("_").pop());
+      let _4_2_7 = parseInt(response.data[4]._4_2_7.split("_").pop());
+      let _4_2_8 = parseInt(response.data[4]._4_2_8.split("_").pop());
+      let _4_2_9 = parseInt(response.data[4]._4_2_9.split("_").pop());
+      let _4_2_10 = parseInt(response.data[4]._4_2_10.split("_").pop());
+
+      let std_1 = std([_1_2_1, _2_2_1, _3_2_1, _4_2_1]).toFixed(2);
+      let std_2 = std([_1_2_2, _2_2_2, _3_2_2, _4_2_2]).toFixed(2);
+      let std_3 = std([_1_2_3, _2_2_3, _3_2_3, _4_2_3]).toFixed(2);
+      let std_4 = std([_1_2_4, _2_2_4, _3_2_4, _4_2_4]).toFixed(2);
+      let std_5 = std([_1_2_5, _2_2_5, _3_2_5, _4_2_5]).toFixed(2);
+      let std_6 = std([_1_2_6, _2_2_6, _3_2_6, _4_2_6]).toFixed(2);
+      let std_7 = std([_1_2_7, _2_2_7, _3_2_7, _4_2_7]).toFixed(2);
+      let std_8 = std([_1_2_8, _2_2_8, _3_2_8, _4_2_8]).toFixed(2);
+      let std_9 = std([_1_2_9, _2_2_9, _3_2_9, _4_2_9]).toFixed(2);
+      let std_10 = std([_1_2_10, _2_2_10, _3_2_10, _4_2_10]).toFixed(2);
+
+      let std_1_color;
+
+      if (std_1 >= 1.5) {
+        std_1_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_1 >= 0.75) {
+        std_1_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_1 >= 0.75) {
+        std_1_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+      let std_2_color;
+
+      if (std_2 >= 1.5) {
+        std_2_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_2 >= 0.75) {
+        std_2_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_2 >= 0.75) {
+        std_2_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+      let std_3_color;
+
+      if (std_3 >= 1.5) {
+        std_3_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_3 >= 0.75) {
+        std_3_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_3 >= 0.75) {
+        std_3_color = "rgba(116, 229, 156, 0.2)";
+      }
+      let std_4_color;
+
+      if (std_4 >= 1.5) {
+        std_4_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_4 >= 0.75) {
+        std_4_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_4 >= 0.75) {
+        std_4_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+      let std_5_color;
+
+      if (std_5 >= 1.5) {
+        std_5_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_5 >= 0.75) {
+        std_5_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_5 >= 0.75) {
+        std_5_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+      let std_6_color;
+
+      if (std_6 >= 1.5) {
+        std_6_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_6 >= 0.75) {
+        std_6_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_6 >= 0.75) {
+        std_6_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+      let std_7_color;
+
+      if (std_7 >= 1.5) {
+        std_7_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_7 >= 0.75) {
+        std_7_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_7 >= 0.75) {
+        std_7_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+      let std_8_color;
+
+      if (std_8 >= 1.5) {
+        std_8_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_8 >= 0.75) {
+        std_8_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_8 >= 0.75) {
+        std_8_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+      let std_9_color;
+
+      if (std_9 >= 1.5) {
+        std_9_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_9 >= 0.75) {
+        std_9_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_9 >= 0.75) {
+        std_9_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+      let std_10_color;
+
+      if (std_10 >= 1.5) {
+        std_10_color = "rgba(235, 87, 87, 0.2)";
+      } else if (std_10 >= 0.75) {
+        std_10_color = "rgba(255, 196, 0, 0.2)";
+      } else if (std_10 >= 0.75) {
+        std_10_color = "rgba(116, 229, 156, 0.2)";
+      }
+
+
+      this.setState(
+        {
+          allResults: response.data,
+          _1_2_1: _1_2_1,
+          _1_2_2: _1_2_2,
+          _1_2_3: _1_2_3,
+          _1_2_4: _1_2_4,
+          _1_2_5: _1_2_5,
+          _1_2_6: _1_2_6,
+          _1_2_7: _1_2_7,
+          _1_2_8: _1_2_8,
+          _1_2_9: _1_2_9,
+          _1_2_10: _1_2_10,
+          _2_2_1: _2_2_1,
+          _2_2_2: _2_2_2,
+          _2_2_3: _2_2_3,
+          _2_2_4: _2_2_4,
+          _2_2_5: _2_2_5,
+          _2_2_6: _2_2_6,
+          _2_2_7: _2_2_7,
+          _2_2_8: _2_2_8,
+          _2_2_9: _2_2_9,
+          _2_2_10: _2_2_10,
+          _3_2_1: _3_2_1,
+          _3_2_2: _3_2_2,
+          _3_2_3: _3_2_3,
+          _3_2_4: _3_2_4,
+          _3_2_5: _3_2_5,
+          _3_2_6: _3_2_6,
+          _3_2_7: _3_2_7,
+          _3_2_8: _3_2_8,
+          _3_2_9: _3_2_9,
+          _3_2_10: _3_2_10,
+          _4_2_1: _4_2_1,
+          _4_2_2: _4_2_2,
+          _4_2_3: _4_2_3,
+          _4_2_4: _4_2_4,
+          _4_2_5: _4_2_5,
+          _4_2_6: _4_2_6,
+          _4_2_7: _4_2_7,
+          _4_2_8: _4_2_8,
+          _4_2_9: _4_2_9,
+          _4_2_10: _4_2_10,
+          std_1: std_1,
+          std_2: std_2,
+          std_3: std_3,
+          std_4: std_4,
+          std_5: std_5,
+          std_6: std_6,
+          std_7: std_7,
+          std_8: std_8,
+          std_9: std_9,
+          std_10: std_10,
+          std_1_color: std_1_color,
+          std_2_color: std_2_color,
+          std_3_color: std_3_color,
+          std_4_color: std_4_color,
+          std_5_color: std_5_color,
+          std_6_color: std_6_color,
+          std_7_color: std_7_color,
+          std_8_color: std_8_color,
+          std_9_color: std_9_color,
+          std_10_color: std_10_color,
+
+        },
+        () => {
+          this.test();
+        }
+      );
+    });
+  }
+
+  test = () => {
+    console.log("test");
+  };
+
+  consoleLog = () => {
+    console.log("STATE: ", this.state);
+  };
 
   render() {
     return (
       <div datatab="Tab 1" className="tab-pane w-tab-pane w--tab-active">
         <div className="container marginbottom80">
           <div className="intro-text results">
-            <img src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1_boejhz.svg" alt="" className="step-icon hide" />
+            <img
+              src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1_boejhz.svg"
+              alt=""
+              className="step-icon hide"
+            />
             <div className="details-wrap">
               <h1>Totale analyse</h1>
             </div>
@@ -80,6 +324,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_1"
                     data-name="1-2table_1"
                     className="table-row results green"
+                    style={{backgroundColor: this.state.std_1_color}}
                   >
                     <p>
                       Onze leerlingen leren betekenisgeven aan en reflecteren op
@@ -89,32 +334,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-b820c8d3cbb8-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_1}</div>
                     </div>
                     <div
                       id="w-node-604904724a9d-7eda5bea"
                       className="table-cell"
                     >
-                      <div>2</div>
+                      <div>{this.state._2_2_1}</div>
                     </div>
                     <div
                       id="w-node-262f12ad3593-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_1}</div>
                     </div>
                     <div
                       id="w-node-76394fcdbe72-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_1}</div>
                     </div>
                     <div
                       id="w-node-fab03bbfa8f1-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_1}</div>
                       </div>
                     </div>
                   </form>
@@ -133,6 +378,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_2"
                     data-name="1-2table_2"
                     className="table-row results red"
+                    style={{backgroundColor: this.state.std_2_color}}
                   >
                     <p>
                       Onze leerlingen zelfsturend zijn en{" "}
@@ -142,32 +388,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-30ed3d8e92c0-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_2}</div>
                     </div>
                     <div
                       id="w-node-097cc2044714-7eda5bea"
                       className="table-cell"
                     >
-                      <div>3</div>
+                      <div>{this.state._2_2_2}</div>
                     </div>
                     <div
                       id="w-node-376f4049eeab-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_2}</div>
                     </div>
                     <div
                       id="w-node-c6a5236aa1e0-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_2}</div>
                     </div>
                     <div
                       id="w-node-dec288b78c46-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_2}</div>
                       </div>
                     </div>
                   </form>
@@ -186,6 +432,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_3"
                     data-name="1-2table_3"
                     className="table-row results yellow"
+                    style={{backgroundColor: this.state.std_3_color}}
                   >
                     <p>
                       Onze leerlingen <em>zich verbonden voelen</em> met hun
@@ -195,32 +442,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-51a3722a7efb-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_3}</div>
                     </div>
                     <div
                       id="w-node-068e8a77dfda-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._2_2_3}</div>
                     </div>
                     <div
                       id="w-node-1523fdfa52b0-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_3}</div>
                     </div>
                     <div
                       id="w-node-c9abd9b38d3c-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_3}</div>
                     </div>
                     <div
                       id="w-node-1a7417235a36-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_3}</div>
                       </div>
                     </div>
                   </form>
@@ -239,6 +486,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_4"
                     data-name="1-2table_4"
                     className="table-row results red"
+                    style={{backgroundColor: this.state.std_4_color}}
                   >
                     <p>
                       Onze leerlingen een{" "}
@@ -251,32 +499,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-a45003249b58-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_4}</div>
                     </div>
                     <div
                       id="w-node-79fde9c8cf54-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._2_2_4}</div>
                     </div>
                     <div
                       id="w-node-8cc2a1dd2f2d-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_4}</div>
                     </div>
                     <div
                       id="w-node-329913080035-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_4}</div>
                     </div>
                     <div
                       id="w-node-6e6a9f590611-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_4}</div>
                       </div>
                     </div>
                   </form>
@@ -295,6 +543,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_5"
                     data-name="1-2table_5"
                     className="table-row results yellow"
+                    style={{backgroundColor: this.state.std_5_color}}
                   >
                     <p>
                       Aspecten zoals bijvoorbeeld taalontwikkeling of
@@ -304,32 +553,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-650f10f933d5-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_5}</div>
                     </div>
                     <div
                       id="w-node-fabcb11e4546-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._2_2_5}</div>
                     </div>
                     <div
                       id="w-node-fefb00b1abb3-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_5}</div>
                     </div>
                     <div
                       id="w-node-fd55cdce3b67-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_5}</div>
                     </div>
                     <div
                       id="w-node-eaa93c8a0104-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_5}</div>
                       </div>
                     </div>
                   </form>
@@ -348,6 +597,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_6"
                     data-name="1-2table_6"
                     className="table-row results green"
+                    style={{backgroundColor: this.state.std_6_color}}
                   >
                     <p>
                       Onze leerlingen
@@ -360,32 +610,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-86c46d0d07d2-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_6}</div>
                     </div>
                     <div
                       id="w-node-6076e730dbc3-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._2_2_6}</div>
                     </div>
                     <div
                       id="w-node-c45f573d883e-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_6}</div>
                     </div>
                     <div
                       id="w-node-962c82fd457d-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_6}</div>
                     </div>
                     <div
                       id="w-node-9cee0003ef81-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_6}</div>
                       </div>
                     </div>
                   </form>
@@ -404,6 +654,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_7"
                     data-name="1-2table_7"
                     className="table-row results green"
+                    style={{backgroundColor: this.state.std_7_color}}
                   >
                     <p>
                       Onze leerlingen hun artistiek, creatief en innovatief
@@ -413,32 +664,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-8203673dc8ee-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_7}</div>
                     </div>
                     <div
                       id="w-node-75fe8302b7b6-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._2_2_7}</div>
                     </div>
                     <div
                       id="w-node-5d7e6057e83e-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_7}</div>
                     </div>
                     <div
                       id="w-node-7b97f459624a-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_7}</div>
                     </div>
                     <div
                       id="w-node-036480f8a30a-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_7}</div>
                       </div>
                     </div>
                   </form>
@@ -457,6 +708,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_8"
                     data-name="1-2table_8"
                     className="table-row results red"
+                    style={{backgroundColor: this.state.std_8_color}}
                   >
                     <p>
                       Onze leerlingen <em>zich kunnen uiten</em> door artistieke
@@ -466,32 +718,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-7000f004fee2-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_8}</div>
                     </div>
                     <div
                       id="w-node-adcc548c671d-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._2_2_8}</div>
                     </div>
                     <div
                       id="w-node-6d7a389c2502-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_8}</div>
                     </div>
                     <div
                       id="w-node-b5d76c7ba758-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_8}</div>
                     </div>
                     <div
                       id="w-node-92a298159968-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_8}</div>
                       </div>
                     </div>
                   </form>
@@ -510,6 +762,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_9"
                     data-name="1-2table_9"
                     className="table-row results red"
+                    style={{backgroundColor: this.state.std_9_color}}
                   >
                     <p>
                       Aandacht is voor <em>vakoverstijgend </em>
@@ -520,32 +773,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-f7549d7bcb5d-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_9}</div>
                     </div>
                     <div
                       id="w-node-afa563c6104c-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._2_2_9}</div>
                     </div>
                     <div
                       id="w-node-71fb042794e4-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_9}</div>
                     </div>
                     <div
                       id="w-node-9c16e8acf195-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_9}</div>
                     </div>
                     <div
                       id="w-node-eb06afd4eb81-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_9}</div>
                       </div>
                     </div>
                   </form>
@@ -564,6 +817,7 @@ class ResultsTab1 extends React.Component {
                     name="wf-form-1-2table_10"
                     data-name="1-2table_10"
                     className="table-row results red"
+                    style={{backgroundColor: this.state.std_10_color}}
                   >
                     <p>
                       Wij onze leerlingen een onderzoekende en open houding
@@ -573,32 +827,32 @@ class ResultsTab1 extends React.Component {
                       id="w-node-4d968a92b913-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._1_2_10}</div>
                     </div>
                     <div
                       id="w-node-dc3f32a02f59-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._2_2_10}</div>
                     </div>
                     <div
                       id="w-node-a93894e3ce10-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._3_2_10}</div>
                     </div>
                     <div
                       id="w-node-645a51255dd6-7eda5bea"
                       className="table-cell"
                     >
-                      <div>1</div>
+                      <div>{this.state._4_2_10}</div>
                     </div>
                     <div
                       id="w-node-6d6e347eaed5-7eda5bea"
                       className="table-cell"
                     >
                       <div className="score-circle">
-                        <div>X,X</div>
+                        <div>{this.state.std_10}</div>
                       </div>
                     </div>
                   </form>
@@ -981,6 +1235,11 @@ class ResultsTab1 extends React.Component {
             </div>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <button onClick={this.consoleLog}>ConsoleLog Tab1</button>
       </div>
     );
   }

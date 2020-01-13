@@ -116,20 +116,20 @@ class Step1 extends React.Component {
           className="navigation sub-nav w-nav"
         >
           <div className="navigation-wrap sub">
-          <Link
+          {/* <Link
               to={"/"}
               onClick={event => {
                 this.submitHandler(event, "/");
               }}
               className="logo-link w-nav-brand"
-            >
+            > */}
               <img
                 src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
                 width={108}
                 alt=""
                 className="logo-image"
               />
-            </Link>
+            {/* </Link> */}
             <div className="menu">
               <nav role="navigation" className="navigation-items w-nav-menu">
                 <div

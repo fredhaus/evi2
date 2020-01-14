@@ -642,9 +642,9 @@ class Step2 extends React.Component {
                               defaultValue="Radio"
                               name="4-2table_4"
                               className="w-form-formradioinput radio-button table w-radio-input"
-                              id="_4_2_4_2"
+                              id="_4_2_4_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._4_2_4 === '_4_2_4_2'}
+                              checked={this.state._4_2_4 === '_4_2_4_1'}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>

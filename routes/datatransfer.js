@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+let axios = require("axios");
 const entryHome = require("../models/entry_home");
 const entryStep01 = require("../models/entry_step01");
 const entryStep02 = require("../models/entry_step02");
@@ -51,7 +52,7 @@ router.post("/homepush", (req, res, next) => {
       _1_4_4: "",
       _1_4_5: "",
       _1_5: "",
-      _1_6: "",
+      _1_6: ""
     });
 
     const newEntryStep02 = new entryStep02({
@@ -147,7 +148,7 @@ router.post("/homepush", (req, res, next) => {
 
 router.post("/step01push", (req, res, next) => {
   const Email = req.body.user;
-  
+
   entryStep01
     .findOneAndUpdate(
       { Email },
@@ -207,7 +208,7 @@ router.post("/step01push", (req, res, next) => {
 
 router.post("/step02push", (req, res, next) => {
   const Email = req.body.user;
-  
+
   entryStep02
     .findOneAndUpdate(
       { Email },
@@ -265,7 +266,7 @@ router.post("/step02push", (req, res, next) => {
 
 router.post("/step03push", (req, res, next) => {
   const Email = req.body.user;
-  
+
   entryStep03
     .findOneAndUpdate(
       { Email },
@@ -333,7 +334,7 @@ router.post("/step03push", (req, res, next) => {
 
 router.post("/step04push", (req, res, next) => {
   const Email = req.body.user;
-  
+
   entryStep04
     .findOneAndUpdate(
       { Email },
@@ -389,26 +390,34 @@ router.post("/step04push", (req, res, next) => {
   // });
 });
 
-// GET
 router.post("/results", function(req, res, next) {
-  let results = []
+  let results = [];
   const Email = req.body.user;
   entryHome.findOne({ Email }).then(foundData => {
-    results.push(foundData)
+    results.push(foundData);
     entryStep01.findOne({ Email }).then(foundData1 => {
-      results.push(foundData1)
+      results.push(foundData1);
       entryStep02.findOne({ Email }).then(foundData2 => {
-        results.push(foundData2)
+        results.push(foundData2);
         entryStep03.findOne({ Email }).then(foundData3 => {
-          results.push(foundData3)
+          results.push(foundData3);
           entryStep04.findOne({ Email }).then(foundData4 => {
-            results.push(foundData4)
-            res.status(200).json(results);            
-          })
-        })
-      })
-    })
-  })  
+            results.push(foundData4);
+            res.status(200).json(results);
+          });
+        });
+      });
+    });
+  });
+});
+
+router.post("/results/pdf", function(req, res, next) {
+  const Email = req.body.user;
+
+  axios.get(
+    `https://hooks.zapier.com/hooks/catch/1031215/oh3wtdl?email=${Email}`, // jonas
+    {}
+  );
 });
 
 module.exports = router;

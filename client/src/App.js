@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, Redirect, Switch, Route } from "react-router-dom";
+import { Link, Redirect, Switch, Route, useParams } from "react-router-dom";
+
 // import Navbar from "./components/Navbar"
 
 import Home from "./components/Home";
@@ -8,6 +9,7 @@ import Step02 from "./components/Step02";
 import Step03 from "./components/Step03";
 import Step04 from "./components/Step04";
 import Results from "./components/Results";
+import paramsTest from "./components/params_test"
 
 // {/* <link href="css/normalize.css" rel="stylesheet" type="text/css" />
 // <link href="css/webflow.css" rel="stylesheet" type="text/css" />
@@ -30,6 +32,7 @@ class App extends React.Component {
   consoleLog = () => {
     console.log("APP STATE: ", this.state)
   }
+
 
   render() {
     return (
@@ -89,6 +92,9 @@ class App extends React.Component {
               </div>
             )}
           ></Route>
+           <Route path="/print/:Id" component={paramsTest} />
+
+
         </Switch>
         <br/>      
         <button onClick={this.consoleLog}>ConsoleLog APP</button>
@@ -96,5 +102,8 @@ class App extends React.Component {
     );
   }
 }
+
+
+
 
 export default App;

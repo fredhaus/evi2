@@ -231,8 +231,7 @@ class ResultsTab1 extends React.Component {
 
         },
         () => {
-          axios.post("/api/datatransfer/results/pdf", this.state).then(response => {console.log(response)})
-          console.log("WEBHOOK HAS BEEN TRIGGERED FRONTEND")
+          this.test()
         }
       );
     });

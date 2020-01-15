@@ -275,6 +275,7 @@ class ResultsTab1 extends React.Component {
 
       this.setState(
         {
+          user: this.props.user,
           allResults: response.data,
           _1_2_1: _1_2_1,
           _1_2_2: _1_2_2,
@@ -341,10 +342,6 @@ class ResultsTab1 extends React.Component {
           meanStep3Scenario: meanStep3Scenario,
           meanStep4Scenario: meanStep4Scenario,
 
-        },
-        () => {
-          axios.post("/api/datatransfer/results/pdf", this.state).then(response => {console.log(response)})
-          console.log("WEBHOOK HAS BEEN TRIGGERED FRONTEND")
         }
       );
     });

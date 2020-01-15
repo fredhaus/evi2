@@ -1,72 +1,22 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { withRouter, useParams } from "react-router-dom";
 import ResultsTab1 from "./ResultsTab1";
 import ResultsTab2 from "./ResultsTab2Step1";
 import ResultsTab3 from "./ResultsTab3Step2";
 import ResultsTab4 from "./ResultsTab4Step3";
 import ResultsTab5 from "./ResultsTab5Step4";
+class paramsTest extends React.Component {
+  state = {};
 
-class Step2 extends React.Component {
-  state = {
-    user: this.props.user,
-    theposition: window.pageYOffset,
-    tab: "1"
-  };
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    axios.post("/api/datatransfer/results/pdf", this.state).then(response => {console.log(response)})
-    console.log("WEBHOOK HAS BEEN TRIGGERED FRONTEND")
+  componentWillMount() {
+    const {
+      match: { params }
+    } = this.props;
+    this.setState({
+      id: params.Id
+    });
+    console.log(params.Id);
   }
-
-  changeHandler = event => {
-    let id = event.target.id;
-    let value = event.target.value;
-    this.setState({
-      [id]: value
-    });
-  };
-
-  tabHandler = event => {
-    let tabId = event.currentTarget.id;
-    let tabIdNr = tabId.split(" ");
-    console.log(tabIdNr);
-    this.setState({
-      tab: tabIdNr[1]
-    });
-  };
-
-  changeHandlerRadio = event => {
-    // console.log(this.state)
-    let id = event.target.id;
-    let idArr = id.split("_");
-    idArr.pop();
-    let mainId = idArr.join("_");
-    this.setState({
-      [mainId]: id
-    });
-  };
-
-  submitHandler = event => {
-    event.preventDefault();
-    axios
-      .post("/api/datatransfer/step04push", this.state)
-      .then(response => {
-        console.log("step04push Response", response.data);
-        this.props.history.push("/result");
-      })
-      .catch(error => {
-        console.log(error.response.data.message);
-        // this.setState({
-        // error: error.response.data.message
-        // })
-      });
-  };
-
-  consoleLog = () => {
-    console.log("STATE: ", this.state);
-  };
 
   render() {
     return (
@@ -164,7 +114,7 @@ class Step2 extends React.Component {
                   </a>
                 )}
 
-                  {this.state.tab === "2" ? (
+                {this.state.tab === "2" ? (
                   <a
                     datatab="Tab 2"
                     id="Tab 2"
@@ -184,86 +134,77 @@ class Step2 extends React.Component {
                   </a>
                 )}
 
-              {this.state.tab === "3" ? (
-                <a
-                datatab="Tab 3"
-                id="Tab 3"
-                className="tab-link w-inline-block w-tab-link w--current"
-                onClick={this.tabHandler}
-              >
-                <div>Deskundigheid</div>
-              </a>
+                {this.state.tab === "3" ? (
+                  <a
+                    datatab="Tab 3"
+                    id="Tab 3"
+                    className="tab-link w-inline-block w-tab-link w--current"
+                    onClick={this.tabHandler}
+                  >
+                    <div>Deskundigheid</div>
+                  </a>
                 ) : (
                   <a
-                  datatab="Tab 3"
-                  id="Tab 3"
-                  className="tab-link w-inline-block w-tab-link"
-                  onClick={this.tabHandler}
-                >
-                  <div>Deskundigheid</div>
-                </a>
+                    datatab="Tab 3"
+                    id="Tab 3"
+                    className="tab-link w-inline-block w-tab-link"
+                    onClick={this.tabHandler}
+                  >
+                    <div>Deskundigheid</div>
+                  </a>
                 )}
 
                 {this.state.tab === "4" ? (
-                <a
-                datatab="Tab 4"
-                id="Tab 4"
-                className="tab-link w-inline-block w-tab-link w--current"
-                onClick={this.tabHandler}
-              >
-                <div>Programma</div>
-              </a>
+                  <a
+                    datatab="Tab 4"
+                    id="Tab 4"
+                    className="tab-link w-inline-block w-tab-link w--current"
+                    onClick={this.tabHandler}
+                  >
+                    <div>Programma</div>
+                  </a>
                 ) : (
                   <a
-                  datatab="Tab 4"
-                  id="Tab 4"
-                  className="tab-link w-inline-block w-tab-link"
-                  onClick={this.tabHandler}
-                >
-                  <div>Programma</div>
-                </a>
+                    datatab="Tab 4"
+                    id="Tab 4"
+                    className="tab-link w-inline-block w-tab-link"
+                    onClick={this.tabHandler}
+                  >
+                    <div>Programma</div>
+                  </a>
                 )}
 
                 {this.state.tab === "5" ? (
-                <a
-                datatab="Tab 5"
-                id="Tab 5"
-                className="tab-link w-inline-block w-tab-link w--current"
-                onClick={this.tabHandler}
-              >
-                <div>Samenwerking</div>
-              </a>
+                  <a
+                    datatab="Tab 5"
+                    id="Tab 5"
+                    className="tab-link w-inline-block w-tab-link w--current"
+                    onClick={this.tabHandler}
+                  >
+                    <div>Samenwerking</div>
+                  </a>
                 ) : (
                   <a
-                  datatab="Tab 5"
-                  id="Tab 5"
-                  className="tab-link w-inline-block w-tab-link"
-                  onClick={this.tabHandler}
-                >
-                  <div>Samenwerking</div>
-                </a>
+                    datatab="Tab 5"
+                    id="Tab 5"
+                    className="tab-link w-inline-block w-tab-link"
+                    onClick={this.tabHandler}
+                  >
+                    <div>Samenwerking</div>
+                  </a>
                 )}
-
               </div>
-              <div className="w-tab-content">
-                {/* {this.state.tab === "1" ? <ResultsTab1 allResults="moin"/> : ""}  */}
-                {this.state.tab === "1" ? <ResultsTab1 user={this.state.user}/> : ""} 
-                {this.state.tab === "2" ? <ResultsTab2 user={this.state.user}/> : ""}
-                {this.state.tab === "3" ? <ResultsTab3 user={this.state.user}/> : ""}
-                {this.state.tab === "4" ? <ResultsTab4 user={this.state.user}/> : ""}
-                {this.state.tab === "5" ? <ResultsTab5 user={this.state.user}/> : ""}
-              </div>
+              <ResultsTab1 user={this.state.id} />
+              <ResultsTab2 user={this.state.id} />
+              <ResultsTab3 user={this.state.id} />
+              <ResultsTab4 user={this.state.id} />
+              <ResultsTab5 user={this.state.id} />
             </div>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.consoleLog}>ConsoleLog</button>
       </div>
     );
   }
 }
 
-export default withRouter(Step2);
+export default withRouter(paramsTest);

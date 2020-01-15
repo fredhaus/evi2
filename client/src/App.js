@@ -9,7 +9,7 @@ import Step02 from "./components/Step02";
 import Step03 from "./components/Step03";
 import Step04 from "./components/Step04";
 import Results from "./components/Results";
-import paramsTest from "./components/params_test"
+import pdfRender from "./components/pdfRender"
 
 // {/* <link href="css/normalize.css" rel="stylesheet" type="text/css" />
 // <link href="css/webflow.css" rel="stylesheet" type="text/css" />
@@ -92,7 +92,7 @@ class App extends React.Component {
               </div>
             )}
           ></Route>
-           <Route path="/print/:Id" component={paramsTest} />
+           <Route path="/print/:Id" component={pdfRender} />
 
 
         </Switch>

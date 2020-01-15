@@ -418,6 +418,7 @@ router.post("/results/pdf", function(req, res, next) {
     `https://hooks.zapier.com/hooks/catch/1031215/oh3wtdl?email=${Email}`, // jonas
     {}
   );
+  res.status(200).json("200");
 });
 
 module.exports = router;

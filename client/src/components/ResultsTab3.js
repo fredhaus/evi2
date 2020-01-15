@@ -6,7 +6,7 @@ class ResultsTab3 extends React.Component {
 
   render() {
     return (
-      <div datatab="Tab 3" className="tab-pane w-tab-pane w--tab-active">
+      <div data-w-tab="Tab 3" className="tab-pane w-tab-pane">
       <div className="container marginbottom80">
         <div className="intro-text results">
           <img

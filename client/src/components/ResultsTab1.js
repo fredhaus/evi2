@@ -164,6 +164,114 @@ class ResultsTab1 extends React.Component {
         std_10_color = "rgba(116, 229, 156, 0.2)";
       }
 
+      let meanStep1 =
+      (_1_2_1 +
+        _1_2_2 +
+        _1_2_3 +
+        _1_2_4 +
+        _1_2_5 +
+        _1_2_6 +
+        _1_2_7 +
+        _1_2_8 +
+        _1_2_9 +
+        _1_2_10) /
+      10;
+
+      let meanStep1Scenario
+      if (meanStep1 <= 2){
+        meanStep1Scenario = "1"
+      }
+      else if(meanStep1 > 2 && meanStep1 <= 3){
+        meanStep1Scenario = "2"
+      }
+      else if(meanStep1 > 3 && meanStep1 <= 4){
+        meanStep1Scenario = "3"
+      }
+      else {
+        meanStep1Scenario = "4"
+      }
+
+      let meanStep2 =
+      (_2_2_1 +
+        _2_2_2 +
+        _2_2_3 +
+        _2_2_4 +
+        _2_2_5 +
+        _2_2_6 +
+        _2_2_7 +
+        _2_2_8 +
+        _2_2_9 +
+        _2_2_10) /
+      10;
+
+      let meanStep2Scenario
+      if (meanStep2 <= 2){
+        meanStep2Scenario = "1"
+      }
+      else if(meanStep2 > 2 && meanStep2 <= 3){
+        meanStep2Scenario = "2"
+      }
+      else if(meanStep2 > 3 && meanStep2 <= 4){
+        meanStep2Scenario = "3"
+      }
+      else {
+        meanStep2Scenario = "4"
+      }
+
+      let meanStep3 =
+      (_3_2_1 +
+        _3_2_2 +
+        _3_2_3 +
+        _3_2_4 +
+        _3_2_5 +
+        _3_2_6 +
+        _3_2_7 +
+        _3_2_8 +
+        _3_2_9 +
+        _3_2_10) /
+      10;
+
+      let meanStep3Scenario
+      if (meanStep3 <= 2){
+        meanStep3Scenario = "1"
+      }
+      else if(meanStep3 > 2 && meanStep3 <= 3){
+        meanStep3Scenario = "2"
+      }
+      else if(meanStep3 > 3 && meanStep3 <= 4){
+        meanStep3Scenario = "3"
+      }
+      else {
+        meanStep3Scenario = "4"
+      }
+
+      let meanStep4 =
+      (_4_2_1 +
+        _4_2_2 +
+        _4_2_3 +
+        _4_2_4 +
+        _4_2_5 +
+        _4_2_6 +
+        _4_2_7 +
+        _4_2_8 +
+        _4_2_9 +
+        _4_2_10) /
+      10;
+
+      let meanStep4Scenario
+      if (meanStep4 <= 2){
+        meanStep4Scenario = "1"
+      }
+      else if(meanStep4 > 2 && meanStep4 <= 3){
+        meanStep4Scenario = "2"
+      }
+      else if(meanStep4 > 3 && meanStep4 <= 4){
+        meanStep4Scenario = "3"
+      }
+      else {
+        meanStep4Scenario = "4"
+      }
+
 
       this.setState(
         {
@@ -228,6 +336,10 @@ class ResultsTab1 extends React.Component {
           std_8_color: std_8_color,
           std_9_color: std_9_color,
           std_10_color: std_10_color,
+          meanStep1Scenario: meanStep1Scenario,
+          meanStep2Scenario: meanStep2Scenario,
+          meanStep3Scenario: meanStep3Scenario,
+          meanStep4Scenario: meanStep4Scenario,
 
         },
         () => {
@@ -888,355 +1000,476 @@ class ResultsTab1 extends React.Component {
             </div>
           </div>
           <div className="text-block-wrapper">
-            <div className="text-block">
-              <h4 className="form-heading">
-                Mogelijke uitkomsten
-                <br />
-              </h4>
-              <p>
-                De uitkomsten kunnen een eenduidig beeld geven of een diffuus
-                beeld, of er iets tussen in. In alle gevallen kun je als school
-                zelf de duiding hieraan geven: herken je dit beeld? Kun je dit
-                beeld verklaren? Ben je tevreden met dit beeld? Wat zou je
-                kunnen of willen veranderen?
-                <br />
-              </p>
-            </div>
-            <div className="text-block">
-              <h4 className="form-heading">
-                Eenduidig beeld
-                <br />
-              </h4>
-              <p>
-                Een eenduidige waardering krijg je als de scores – ongeveer – in
-                elkaars buurt liggen en geeft aan dat jullie op een coherente
-                manier werken – vanuit de 3 onderwerpen – aan cultuuronderwijs
-                op jullie school.
-                <br />
-              </p>
-            </div>
-            <div className="text-block">
-              <h4 className="form-heading">
-                Een diffuus beeld
-                <br />
-              </h4>
-              <p>
-                Liggen de scores per stelling nogal uiteen? Laat het overzicht –
-                de tabel -&nbsp; bijvoorbeeld bij <em>artistieke uiting</em> een
-                5 zien bij visie en een 2 en 1 voor respectievelijk
-                deskundigheid en programma, dan laat dit een incoherent beeld –
-                diffuus beeld - zien. Dit betekent dat de visie nog niet op 1
-                lijn zit met de deskundigheid en het programma en de relatie
-                tussen deze 3 voor het item <em>artistieke uiting</em> verder
-                kan worden ontwikkeld of dat hiervoor een heldere verklaring is.
-                <br />
-              </p>
-            </div>
-          </div>
-          <div className="results-score-wrapper">
-            <div className="results-score-number">
-              <div className="score-number _1">1</div>
-              <div className="score-per" />
-              <div className="score-number _2">4</div>
-            </div>
-            <div className="results-score-text">
-              <h3 className="marginbottom20">
-                In welk EVI scenario zitten wij?
-                <br />
-              </h3>
-              <p>
-                Op basis van de scores in onderdeel{" "}
-                <em>2 Normeren/stellingen</em> zit je school in dit scenario.
-                Vergelijk deze uitkomst met je eigen keuze bij vraag 5 van{" "}
-                <em>Visie, Deskundigheid, Programma </em>en
-                <em> Samenwerking</em>. Bespreek dit binnen je team en eventueel
-                met een adviseur.
-                <br />
-              </p>
-            </div>
-          </div>
-          <div className="content-block">
-            <div className="form-section-header">
-              <h3>Scenario 1</h3>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Visie</h4>
-                <p>
-                  De school heeft geen visie vastgelegd op cultuuronderwijs.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Deskundigheid</h4>
-                <p>
-                  De school coördineert en bevordert de interne deskundigheid
-                  niet bewust op het gebied van cultuuronderwijs.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Programma</h4>
-                <p>
-                  De culturele activiteiten, lessen of workshops vertonen geen
-                  samenhang. Ze vinden incidenteel – zonder structureel budget -
-                  plaats en worden willekeurig gekozen.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Samenwerking</h4>
-                <p>
-                  De school heeft incidentele samenwerking en/of contacten met
-                  externe partners en – deskundigen.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="content-block">
-            <div className="form-section-header">
-              <h3>Scenario 2</h3>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Visie</h4>
-                <p>
-                  De school heeft een eigen visie op cultuuronderwijs vastgelegd
-                  in een cultuurplan. De visie wordt gedragen en geëvalueerd
-                  door de directeur en iemand met cultuur onder haar hoede (bv
-                  cultuurcontactpersoon, icc-er of leerkracht cultuur), zij
-                  houden het team op de hoogte en waar mogelijk praat het team
-                  mee.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Deskundigheid</h4>
-                <p>
-                  De school coördineert de deskundigheid op het gebied van
-                  cultuuronderwijs in haar school wel (bijvoorbeeld door een
-                  icc’er), maar stimuleert deze niet. Er is zicht op waar de
-                  deskundigheid zit voor cultuuronderwijs.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Programma</h4>
-                <p>
-                  De culturele activiteiten, lessen of workshops zijn op elkaar
-                  afgestemd, bijvoorbeeld in de vorm van een cultuurmenu of
-                  projectweek. Hiervoor worden voldoende tijd en middelen
-                  gereserveerd.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Samenwerking</h4>
-                <p>
-                  De school werkt structureel samen met externe partners en –
-                  deskundigen. De inhoudelijke keuzes liggen bij de externe
-                  partner (afnemen cultuuraanbod).
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="content-block">
-            <div className="form-section-header">
-              <h3>Scenario 3</h3>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Visie</h4>
-                <p>
-                  De school heeft een eigen visie op cultuuronderwijs die als
-                  apart onderdeel is opgenomen in een schoolplan. De visie is
-                  mede-ontwikkeld door het team en zij beslissen mee.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Deskundigheid</h4>
-                <p>
-                  De school coördineert en bevordert de deskundigheid
-                  incidenteel op het gebied van cultuuronderwijs. Er is
-                  organisatorische deskundigheid in de school (bijvoorbeeld een
-                  icc-er/cultuurbegeleider) die deskundigheid bewust en gericht
-                  inzet en bovendien incidentele professionalisering stimuleert,
-                  coördineert en organiseert (bijv. teamscholingen). Hiervoor
-                  worden voldoende tijd en middelen gereserveerd.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Programma</h4>
-                <p>
-                  De school brengt bewust samenhang aan - vanuit de zelf
-                  benoemde doelen - in de culturele activiteiten, lessen of
-                  workshops door bijvoorbeeld samenhang met andere vakken en/ of
-                  er is een opbouw van groep 1 t/m 8. Hiervoor wordt structureel
-                  voldoende tijd en middelen gezocht en/of gereserveerd.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Samenwerking</h4>
-                <p>
-                  De school onderzoekt en bespreekt met de externe partner hoe
-                  het aanbod optimaal kan aansluiten bij wat zij leerlingen
-                  willen meegeven.&nbsp;
-                  <br />
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="content-block">
-            <div className="form-section-header">
-              <h3>Scenario 4</h3>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/step1-small_pgx8bm.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Visie</h4>
-                <p>
-                  De school heeft een visie op cultuuronderwijs geïntegreerd in
-                  haar bredere onderwijsvisie en opgenomen in het schoolplan.
-                  Deze brede visie, met aandacht voor cultuuronderwijs, is
-                  ontwikkeld door het team. Het team voelt zich eigenaar van de
-                  visie en plannen, deze zijn een vast onderdeel worden van de
-                  jaarlijkse evaluatie.
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step2-small_ugydes.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Deskundigheid</h4>
-                <p>
-                  De school coördineert en bevordert planmatig en structureel de
-                  deskundigheid van het hele team op het gebied van
-                  cultuuronderwijs. Kwaliteiten van teamleden worden
-                  gestimuleerd en ingezet. De school is, ook op het vlak van
-                  cultuuronderwijs, een lerende organisatie hiervoor zijn
-                  ruimschoots middelen beschikbaar.
-                  <br />
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step3-small_vyjizs.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Programma</h4>
-                <p>
-                  De school brengt bewust samenhang aan - vanuit de zelf
-                  benoemde doelen - in de culturele activiteiten, lessen of
-                  workshops door bijvoorbeeld samenhang met andere vakken en/of
-                  een opbouw van groep 1 t/m 8. Ook wordt een verbinding gemaakt
-                  met buitenschoolse activiteiten, de voorschoolse educatie, of
-                  het voortgezet onderwijs. Tijd en middelen zijn structureel en
-                  ruimschoots aanwezig.
-                  <br />
-                </p>
-              </div>
-            </div>
-            <div className="scenario-wrapper-static">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511731/step4-small_rjgszs.svg"
-                alt=""
-                className="step-icon small"
-              />
-              <div className="form-row-header scenario-header">
-                <h4 className="heading">Samenwerking</h4>
-                <p>
-                  De school legt de afspraken over samenwerking met externe
-                  partners en deskundigen vast. Deze is gericht op een optimale
-                  aansluiting van inhoud van het programma bij de leerlingen.
-                  <br />
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+                      <div className="text-block">
+                        <h4 className="form-heading">
+                          Mogelijke uitkomsten
+                          <br />
+                        </h4>
+                        <p>
+                          De uitkomsten kunnen een eenduidig beeld geven of een
+                          diffuus beeld, of er iets tussen in. In alle gevallen
+                          kun je als school zelf de duiding hieraan geven:
+                          herken je dit beeld? Kun je dit beeld verklaren? Ben
+                          je tevreden met dit beeld? Wat zou je kunnen of willen
+                          veranderen?
+                          <br />
+                        </p>
+                      </div>
+                      <div className="text-block">
+                        <h4 className="form-heading">
+                          Eenduidig beeld
+                          <br />
+                        </h4>
+                        <p>
+                          Een eenduidige waardering krijg je als de scores –
+                          ongeveer – in elkaars buurt liggen en geeft aan dat
+                          jullie op een coherente manier werken – vanuit de 3
+                          onderwerpen – aan cultuuronderwijs op jullie school.
+                          <br />
+                        </p>
+                      </div>
+                      <div className="text-block">
+                        <h4 className="form-heading">
+                          Een diffuus beeld
+                          <br />
+                        </h4>
+                        <p>
+                          Liggen de scores per stelling nogal uiteen? Laat het
+                          overzicht – de tabel -&nbsp; bijvoorbeeld bij{" "}
+                          <em>artistieke uiting</em> een 5 zien bij visie en een
+                          2 en 1 voor respectievelijk deskundigheid en
+                          programma, dan laat dit een incoherent beeld – diffuus
+                          beeld - zien. Dit betekent dat de visie nog niet op 1
+                          lijn zit met de deskundigheid en het programma en de
+                          relatie tussen deze 3 voor het item{" "}
+                          <em>artistieke uiting</em> verder kan worden
+                          ontwikkeld of dat hiervoor een heldere verklaring is.
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="results-score-wrapper">
+                      <div className="results-score-number">
+                      <div className="score-number _1">{this.state.meanStep1Scenario}</div>
+                        <div className="score-per" />
+                        <div className="score-number _2">4</div>
+                      </div>
+                      <div className="results-score-text">
+                        <h3 className="marginbottom20">
+                          In welk EVI scenario zitten wij voor Visie?
+                          <br />
+                        </h3>
+                        <p>
+                          Op basis van de scores in onderdeel{" "}
+                          <em>2 Normeren/stellingen</em> zit je school in dit
+                          scenario. Vergelijk deze uitkomst met je eigen keuze
+                          bij vraag 5 van{" "}
+                          <em>Visie, Deskundigheid, Programma </em>en
+                          <em> Samenwerking</em>. Bespreek dit binnen je team en
+                          eventueel met een adviseur.
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="content-block">
+                      <div className="form-section-header">
+                        <h3>Scenario Visie</h3>
+                      </div>
+                      {this.state.meanStep1Scenario === "1"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862226/evi2_120120/step1-small_arnr0t.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Visie Scenario 1</h4>
+                          <p>
+                            De school heeft geen visie vastgelegd op
+                            cultuuronderwijs.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep1Scenario === "2"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862226/evi2_120120/step1-small_arnr0t.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Visie Scenario 2</h4>
+                          <p>
+                            De school heeft een eigen visie op cultuuronderwijs
+                            vastgelegd in een cultuurplan. De visie wordt
+                            gedragen en geëvalueerd door de directeur en iemand
+                            met cultuur onder haar hoede (bv
+                            cultuurcontactpersoon, icc-er of leerkracht
+                            cultuur), zij houden het team op de hoogte en waar
+                            mogelijk praat het team mee.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep1Scenario === "3"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862226/evi2_120120/step1-small_arnr0t.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Visie Scenario 3</h4>
+                          <p>
+                            De school heeft een eigen visie op cultuuronderwijs
+                            die als apart onderdeel is opgenomen in een
+                            schoolplan. De visie is mede-ontwikkeld door het
+                            team en zij beslissen mee.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep1Scenario === "4"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862226/evi2_120120/step1-small_arnr0t.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Visie Scenario 4</h4>
+                          <p>
+                            De school heeft een visie op cultuuronderwijs
+                            geïntegreerd in haar bredere onderwijsvisie en
+                            opgenomen in het schoolplan. Deze brede visie, met
+                            aandacht voor cultuuronderwijs, is ontwikkeld door
+                            het team. Het team voelt zich eigenaar van de visie
+                            en plannen, deze zijn een vast onderdeel worden van
+                            de jaarlijkse evaluatie.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                    </div>
+                    <div className="results-score-wrapper">
+                      <div className="results-score-number">
+                      <div className="score-number _1">{this.state.meanStep2Scenario}</div>
+                        <div className="score-per" />
+                        <div className="score-number _2">4</div>
+                      </div>
+                      <div className="results-score-text">
+                        <h3 className="marginbottom20">
+                          In welk EVI scenario zitten wij voor Deskundigheid?
+                          <br />
+                        </h3>
+                        <p>
+                          Op basis van de scores in onderdeel{" "}
+                          <em>2 Normeren/stellingen</em> zit je school in dit
+                          scenario. Vergelijk deze uitkomst met je eigen keuze
+                          bij vraag 5 van{" "}
+                          <em>Visie, Deskundigheid, Programma </em>en
+                          <em> Samenwerking</em>. Bespreek dit binnen je team en
+                          eventueel met een adviseur.
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="content-block">
+                      <div className="form-section-header">
+                        <h3>Scenario Deskundigheid</h3>
+                      </div>
+                      {this.state.meanStep2Scenario === "1"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step2-small_yasr9m.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Deskundigheid Scenario 1</h4>
+                          <p>
+                            De school coördineert en bevordert de interne
+                            deskundigheid niet bewust op het gebied van
+                            cultuuronderwijs.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep2Scenario === "2"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step2-small_yasr9m.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Deskundigheid Scenario 2</h4>
+                          <p>
+                            De school coördineert de deskundigheid op het gebied
+                            van cultuuronderwijs in haar school wel
+                            (bijvoorbeeld door een icc’er), maar stimuleert deze
+                            niet. Er is zicht op waar de deskundigheid zit voor
+                            cultuuronderwijs.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep2Scenario === "3"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step2-small_yasr9m.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Deskundigheid Scenario 3</h4>
+                          <p>
+                            De school coördineert en bevordert de deskundigheid
+                            incidenteel op het gebied van cultuuronderwijs. Er
+                            is organisatorische deskundigheid in de school
+                            (bijvoorbeeld een icc-er/cultuurbegeleider) die
+                            deskundigheid bewust en gericht inzet en bovendien
+                            incidentele professionalisering stimuleert,
+                            coördineert en organiseert (bijv. teamscholingen).
+                            Hiervoor worden voldoende tijd en middelen
+                            gereserveerd.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep2Scenario === "4"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step2-small_yasr9m.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Deskundigheid Scenario 4</h4>
+                          <p>
+                            De school coördineert en bevordert planmatig en
+                            structureel de deskundigheid van het hele team op
+                            het gebied van cultuuronderwijs. Kwaliteiten van
+                            teamleden worden gestimuleerd en ingezet. De school
+                            is, ook op het vlak van cultuuronderwijs, een
+                            lerende organisatie hiervoor zijn ruimschoots
+                            middelen beschikbaar.
+                            <br />
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                    </div>
+                    <div className="results-score-wrapper">
+                      <div className="results-score-number">
+                      <div className="score-number _1">{this.state.meanStep3Scenario}</div>
+                        <div className="score-per" />
+                        <div className="score-number _2">4</div>
+                      </div>
+                      <div className="results-score-text">
+                        <h3 className="marginbottom20">
+                          In welk EVI scenario zitten wij voor Programma?
+                          <br />
+                        </h3>
+                        <p>
+                          Op basis van de scores in onderdeel{" "}
+                          <em>2 Normeren/stellingen</em> zit je school in dit
+                          scenario. Vergelijk deze uitkomst met je eigen keuze
+                          bij vraag 5 van{" "}
+                          <em>Visie, Deskundigheid, Programma </em>en
+                          <em> Samenwerking</em>. Bespreek dit binnen je team en
+                          eventueel met een adviseur.
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="content-block">
+                      <div className="form-section-header">
+                        <h3>Scenario Programma</h3>
+                      </div>
+                      {this.state.meanStep3Scenario === "1"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862227/evi2_120120/step3-small_j488en.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Programma Scenario 1</h4>
+                          <p>
+                            De culturele activiteiten, lessen of workshops
+                            vertonen geen samenhang. Ze vinden incidenteel –
+                            zonder structureel budget - plaats en worden
+                            willekeurig gekozen.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep3Scenario === "2"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862227/evi2_120120/step3-small_j488en.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Programma Scenario 2</h4>
+                          <p>
+                            De culturele activiteiten, lessen of workshops zijn
+                            op elkaar afgestemd, bijvoorbeeld in de vorm van een
+                            cultuurmenu of projectweek. Hiervoor worden
+                            voldoende tijd en middelen gereserveerd.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep3Scenario === "3"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862227/evi2_120120/step3-small_j488en.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Programma Scenario 3</h4>
+                          <p>
+                            De school brengt bewust samenhang aan - vanuit de
+                            zelf benoemde doelen - in de culturele activiteiten,
+                            lessen of workshops door bijvoorbeeld samenhang met
+                            andere vakken en/ of er is een opbouw van groep 1
+                            t/m 8. Hiervoor wordt structureel voldoende tijd en
+                            middelen gezocht en/of gereserveerd.
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                      {this.state.meanStep3Scenario === "4"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862227/evi2_120120/step3-small_j488en.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Programma Scenario 4</h4>
+                          <p>
+                            De school brengt bewust samenhang aan - vanuit de
+                            zelf benoemde doelen - in de culturele activiteiten,
+                            lessen of workshops door bijvoorbeeld samenhang met
+                            andere vakken en/of een opbouw van groep 1 t/m 8.
+                            Ook wordt een verbinding gemaakt met buitenschoolse
+                            activiteiten, de voorschoolse educatie, of het
+                            voortgezet onderwijs. Tijd en middelen zijn
+                            structureel en ruimschoots aanwezig.
+                            <br />
+                          </p>
+                        </div>
+                      </div>
+                       ) : ("")}
+                    </div>
+                    <div className="results-score-wrapper">
+                      <div className="results-score-number">
+                      <div className="score-number _1">{this.state.meanStep4Scenario}</div>
+                        <div className="score-per" />
+                        <div className="score-number _2">4</div>
+                      </div>
+                      <div className="results-score-text">
+                        <h3 className="marginbottom20">
+                          In welk EVI scenario zitten wij voor Samenwerking?
+                          <br />
+                        </h3>
+                        <p>
+                          Op basis van de scores in onderdeel{" "}
+                          <em>2 Normeren/stellingen</em> zit je school in dit
+                          scenario. Vergelijk deze uitkomst met je eigen keuze
+                          bij vraag 5 van{" "}
+                          <em>Visie, Deskundigheid, Programma </em>en
+                          <em> Samenwerking</em>. Bespreek dit binnen je team en
+                          eventueel met een adviseur.
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="content-block">
+                      <div className="form-section-header">
+                        <h3>Scenario Samenwerking</h3>
+                      </div>
+                      {this.state.meanStep4Scenario === "1"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862227/evi2_120120/step4-small_bekxdm.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Samenwerking Scenario 1</h4>
+                          <p>
+                            De school heeft incidentele samenwerking en/of
+                            contacten met externe partners en – deskundigen.
+                          </p>
+                        </div>
+                      </div>
+                       ) : ("")}
+                       {this.state.meanStep4Scenario === "2"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862227/evi2_120120/step4-small_bekxdm.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Samenwerking Scenario 2</h4>
+                          <p>
+                            De school werkt structureel samen met externe
+                            partners en – deskundigen. De inhoudelijke keuzes
+                            liggen bij de externe partner (afnemen
+                            cultuuraanbod).
+                          </p>
+                        </div>
+                      </div>
+                       ) : ("")}
+                       {this.state.meanStep4Scenario === "3"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862227/evi2_120120/step4-small_bekxdm.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Samenwerking Scenario 3</h4>
+                          <p>
+                            De school onderzoekt en bespreekt met de externe
+                            partner hoe het aanbod optimaal kan aansluiten bij
+                            wat zij leerlingen willen meegeven.&nbsp;
+                            <br />
+                          </p>
+                        </div>
+                      </div>
+                       ) : ("")}
+                       {this.state.meanStep4Scenario === "4"? (
+                      <div className="scenario-wrapper-static">
+                        <img
+                          src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862227/evi2_120120/step4-small_bekxdm.svg"
+                          alt=""
+                          className="step-icon small"
+                        />
+                        <div className="form-row-header scenario-header">
+                          <h4 className="heading">Samenwerking Scenario 4</h4>
+                          <p>
+                            De school legt de afspraken over samenwerking met
+                            externe partners en deskundigen vast. Deze is
+                            gericht op een optimale aansluiting van inhoud van
+                            het programma bij de leerlingen.
+                            <br />
+                          </p>
+                        </div>
+                      </div>
+                      ) : ("")}
+                    </div>
+                  </div>
+                
+                
         <br />
         <br />
         <br />

@@ -6,7 +6,7 @@ class ResultsTab2 extends React.Component {
 
   render() {
     return (
-      <div datatab="Tab 2" className="tab-pane w-tab-pane w--tab-active">
+      <div data-w-tab="Tab 2" className="tab-pane w-tab-pane">
       <div className="container marginbottom80">
         <div className="intro-text results">
           <img
@@ -1316,7 +1316,7 @@ class ResultsTab2 extends React.Component {
         </div>
       </div>
     </div>
-    );
+        );
   }
 }
 

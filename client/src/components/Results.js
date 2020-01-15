@@ -106,14 +106,14 @@ class Step2 extends React.Component {
           className="navigation sub-nav results w-nav"
         >
           <div className="navigation-wrap sub results">
-            <a href="../index.html" className="logo-link w-nav-brand">
+            <div className="logo-link w-nav-brand">
               <img
                 src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
                 width={108}
                 alt=""
                 className="logo-image"
               />
-            </a>
+            </div>
           </div>
           <div style={{ opacity: 0 }} className="nav-bg" />
         </div>

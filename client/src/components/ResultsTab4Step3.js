@@ -1490,7 +1490,8 @@ class ResultsTab4 extends React.Component {
                               ? "radio-button-static marginright15 active"
                               : "radio-button-static marginright15"
                           }
-                        />                         <div className="checkbox-label">Nee</div>
+                        />                         
+                        <div className="checkbox-label">Nee</div>
                       </div>
                     </div>
                   </div>
@@ -1544,7 +1545,7 @@ class ResultsTab4 extends React.Component {
                     </div>
                   </div>
                 </div>
-                ):("")})
+                ):("")}
                 {this.state._3_4_4 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">

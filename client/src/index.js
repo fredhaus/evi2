@@ -13,6 +13,7 @@ import "./evi-2-0.webflow.css"
 
 
 document.getElementById('root').innerText = 'Charging Up ...'
+document.title = "EVI 2.0"
 
 // makes sure the entire App only gets rendered AFTER we know if the user is logged in
 axios.get('/api/auth/checkuser').then(res => {

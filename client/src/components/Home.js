@@ -13,20 +13,19 @@ class Home extends React.Component {
     Postcode: "",
     Email: "",
     Plaats: "",
-    Telefoon: ""
+    Telefoon: "",
+    error: ""
   };
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    axios
-      .post("/api/datatransfer/results", this.state)
-      .then(response => {
-        
-        console.log("Results", response.data);
-        this.setState({
-          user: this.props.user, ...response.data[3]
-        });
-      })
+    axios.post("/api/datatransfer/results", this.state).then(response => {
+      console.log("Results", response.data);
+      this.setState({
+        user: this.props.user,
+        ...response.data[3]
+      });
+    });
   }
   changeHandler = event => {
     let id = event.target.id;
@@ -44,13 +43,12 @@ class Home extends React.Component {
         console.log("Homepush Response", response.data);
         this.props.updateUser(this.state.Email);
         this.props.history.push("/step01");
-
       })
       .catch(error => {
         console.log(error.response.data.message);
-        // this.setState({
-        // error: error.response.data.message
-        // })
+        this.setState({
+        error: error.response.data.message
+        })
       });
   };
 
@@ -387,17 +385,22 @@ class Home extends React.Component {
                       Oops! Something went wrong while submitting the form.
                     </div>
                   </div>
+                  {this.state.error ? (
+                  <div className="snackbar red">
+                    <p className="paragraph-small snackbar-text">
+                      Email adres al in gebruik.
+                    </p>
+                  </div>
+                  ): ("")}
                 </div>
-                
 
-                  <Link
-                    to={"/step01"}
-                    className="button cc-jumbo-button w-inline-block"
-                    onClick={this.submitHandler}
-                  >
-                    <div>Volgende stap</div>
-                  </Link>
-                
+                <Link
+                  to={"/step01"}
+                  className="button cc-jumbo-button w-inline-block"
+                  onClick={this.submitHandler}
+                >
+                  <div>Volgende stap</div>
+                </Link>
               </div>
             </div>
           </div>

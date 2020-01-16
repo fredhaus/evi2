@@ -7,6 +7,7 @@ class Step1 extends React.Component {
   state = {
     user: this.props.user,
     theposition: window.pageYOffset,
+    error: ""
     // _1_1_1: "",
     // _1_1_2: "",
     // _1_1_3: "",
@@ -28,21 +29,18 @@ class Step1 extends React.Component {
     // _1_4_5: "",
     // _1_5: "",
     // _1_6: "",
-
   };
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    axios
-      .post("/api/datatransfer/results", this.state)
-      .then(response => {
-        console.log("Results", response.data);
-        this.setState({
-          user: this.props.user, ...response.data[1]
-        });
-      })
+    axios.post("/api/datatransfer/results", this.state).then(response => {
+      console.log("Results", response.data);
+      this.setState({
+        user: this.props.user,
+        ...response.data[1]
+      });
+    });
   }
-
 
   changeHandler = event => {
     let id = event.target.id;
@@ -64,17 +62,33 @@ class Step1 extends React.Component {
   changeHandlerRadio = event => {
     // console.log(this.state)
     let id = event.target.id;
-    let idArr = id.split("_")
-    idArr.pop()
-    let mainId = idArr.join("_")
+    let idArr = id.split("_");
+    idArr.pop();
+    let mainId = idArr.join("_");
     this.setState({
       [mainId]: id
     });
   };
 
-
   submitHandler = (event, target) => {
     event.preventDefault();
+    if (
+      this.state._1_2_1 === "" ||
+      this.state._1_2_2 === "" ||
+      this.state._1_2_3 === "" ||
+      this.state._1_2_4 === "" ||
+      this.state._1_2_5 === "" ||
+      this.state._1_2_6 === "" ||
+      this.state._1_2_7 === "" ||
+      this.state._1_2_8 === "" ||
+      this.state._1_2_9 === "" ||
+      this.state._1_2_10 === ""
+    ) {
+        this.setState({
+        error: "Section 1.2 not complete"
+        })
+        return
+    }
     axios
       .post("/api/datatransfer/step01push", this.state)
       .then(response => {
@@ -116,19 +130,19 @@ class Step1 extends React.Component {
           className="navigation sub-nav w-nav"
         >
           <div className="navigation-wrap sub">
-          {/* <Link
+            {/* <Link
               to={"/"}
               onClick={event => {
                 this.submitHandler(event, "/");
               }}
               className="logo-link w-nav-brand"
             > */}
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
-                width={108}
-                alt=""
-                className="logo-image"
-              />
+            <img
+              src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
+              width={108}
+              alt=""
+              className="logo-image"
+            />
             {/* </Link> */}
             <div className="menu">
               <nav role="navigation" className="navigation-items w-nav-menu">
@@ -142,7 +156,7 @@ class Step1 extends React.Component {
                 <div
                   href="../form/stap-02-deskundigheid.html"
                   className="form-nav-wrapper w-inline-block"
-                  style={{opacity: "0.6"}}
+                  style={{ opacity: "0.6" }}
                 >
                   <div className="navigation-item form header">Step 2</div>
                   <div className="navigation-item form">Deskundigheid</div>
@@ -150,7 +164,7 @@ class Step1 extends React.Component {
                 <div
                   href="../form/stap-03-programma.html"
                   className="form-nav-wrapper w-inline-block"
-                  style={{opacity: "0.6"}}
+                  style={{ opacity: "0.6" }}
                 >
                   <div className="navigation-item form header">Step 3</div>
                   <div className="navigation-item form">Programma</div>
@@ -158,7 +172,7 @@ class Step1 extends React.Component {
                 <div
                   href="../form/stap-04-samenwerking.html"
                   className="form-nav-wrapper w-inline-block"
-                  style={{opacity: "0.6"}}
+                  style={{ opacity: "0.6" }}
                 >
                   <div className="navigation-item form header">Step 4</div>
                   <div className="navigation-item form">Samenwerking</div>
@@ -174,7 +188,7 @@ class Step1 extends React.Component {
               </div>
             </div>
           </div>
-          <div className="nav-bg" style={{opacity: "1", boxShadow: "none"}}/>
+          <div className="nav-bg" style={{ opacity: "1", boxShadow: "none" }} />
         </div>
         <div className="section hero subpage steps">
           <div className="container">
@@ -264,8 +278,7 @@ class Step1 extends React.Component {
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_1_1_2_1"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._1_1_2 === '_1_1_2_1'}  
-
+                            checked={this.state._1_1_2 === "_1_1_2_1"}
                           />
                           <span className="checkbox-label w-form-label">
                             Ja
@@ -280,7 +293,7 @@ class Step1 extends React.Component {
                             id="_1_1_2_2"
                             className="w-form-formradioinput radio-button w-radio-input"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._1_1_2 === '_1_1_2_2'}  
+                            checked={this.state._1_1_2 === "_1_1_2_2"}
                           />
                           <span className="checkbox-label w-form-label">
                             Nee
@@ -415,7 +428,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_1_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_1 === '_1_2_1_1'}  
+                              checked={this.state._1_2_1 === "_1_2_1_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -433,7 +446,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_1_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_1 === '_1_2_1_2'}  
+                              checked={this.state._1_2_1 === "_1_2_1_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -451,7 +464,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_1_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_1 === '_1_2_1_3'}  
+                              checked={this.state._1_2_1 === "_1_2_1_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -469,7 +482,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_1_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_1 === '_1_2_1_4'}  
+                              checked={this.state._1_2_1 === "_1_2_1_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -487,7 +500,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_1_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_1 === '_1_2_1_5'}  
+                              checked={this.state._1_2_1 === "_1_2_1_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -526,7 +539,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_2_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_2 === '_1_2_2_1'}  
+                              checked={this.state._1_2_2 === "_1_2_2_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -544,7 +557,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_2_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_2 === '_1_2_2_2'}  
+                              checked={this.state._1_2_2 === "_1_2_2_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -562,7 +575,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_2_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_2 === '_1_2_2_3'}  
+                              checked={this.state._1_2_2 === "_1_2_2_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -580,7 +593,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_2_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_2 === '_1_2_2_4'}  
+                              checked={this.state._1_2_2 === "_1_2_2_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -598,7 +611,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_2_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_2 === '_1_2_2_5'}  
+                              checked={this.state._1_2_2 === "_1_2_2_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -637,8 +650,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_3_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_3 === '_1_2_3_1'}  
-                              
+                              checked={this.state._1_2_3 === "_1_2_3_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -656,7 +668,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_3_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_3 === '_1_2_3_2'}
+                              checked={this.state._1_2_3 === "_1_2_3_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -674,7 +686,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_3_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_3 === '_1_2_3_3'}
+                              checked={this.state._1_2_3 === "_1_2_3_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -692,7 +704,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_3_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_3 === '_1_2_3_4'}
+                              checked={this.state._1_2_3 === "_1_2_3_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -710,7 +722,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_3_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_3 === '_1_2_3_5'}
+                              checked={this.state._1_2_3 === "_1_2_3_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -752,7 +764,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_4_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_4 === '_1_2_4_1'}
+                              checked={this.state._1_2_4 === "_1_2_4_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -770,7 +782,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_4_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_4 === '_1_2_4_2'}
+                              checked={this.state._1_2_4 === "_1_2_4_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -788,7 +800,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_4_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_4 === '_1_2_4_3'}
+                              checked={this.state._1_2_4 === "_1_2_4_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -806,7 +818,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_4_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_4 === '_1_2_4_4'}
+                              checked={this.state._1_2_4 === "_1_2_4_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -824,7 +836,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_4_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_4 === '_1_2_4_5'}
+                              checked={this.state._1_2_4 === "_1_2_4_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -863,7 +875,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_5_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_5 === '_1_2_5_1'}
+                              checked={this.state._1_2_5 === "_1_2_5_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -881,7 +893,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_5_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_5 === '_1_2_5_2'}
+                              checked={this.state._1_2_5 === "_1_2_5_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -899,7 +911,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_5_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_5 === '_1_2_5_3'}
+                              checked={this.state._1_2_5 === "_1_2_5_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -917,7 +929,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_5_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_5 === '_1_2_5_4'}
+                              checked={this.state._1_2_5 === "_1_2_5_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -935,7 +947,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_5_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_5 === '_1_2_5_5'}
+                              checked={this.state._1_2_5 === "_1_2_5_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -976,7 +988,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_6_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_6 === '_1_2_6_1'}
+                              checked={this.state._1_2_6 === "_1_2_6_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -994,7 +1006,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_6_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_6 === '_1_2_6_2'}
+                              checked={this.state._1_2_6 === "_1_2_6_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1012,7 +1024,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_6_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_6 === '_1_2_6_3'}
+                              checked={this.state._1_2_6 === "_1_2_6_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1030,7 +1042,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_6_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_6 === '_1_2_6_4'}
+                              checked={this.state._1_2_6 === "_1_2_6_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1048,7 +1060,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_6_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_6 === '_1_2_6_5'}
+                              checked={this.state._1_2_6 === "_1_2_6_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1087,7 +1099,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_7_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_7 === '_1_2_7_1'}
+                              checked={this.state._1_2_7 === "_1_2_7_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1105,7 +1117,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_7_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_7 === '_1_2_7_2'}
+                              checked={this.state._1_2_7 === "_1_2_7_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1123,7 +1135,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_7_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_7 === '_1_2_7_3'}
+                              checked={this.state._1_2_7 === "_1_2_7_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1141,7 +1153,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_7_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_7 === '_1_2_7_4'}
+                              checked={this.state._1_2_7 === "_1_2_7_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1159,7 +1171,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_7_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_7 === '_1_2_7_5'}
+                              checked={this.state._1_2_7 === "_1_2_7_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1198,7 +1210,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_8_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_8 === '_1_2_8_1'}
+                              checked={this.state._1_2_8 === "_1_2_8_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1216,7 +1228,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_8_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_8 === '_1_2_8_2'}
+                              checked={this.state._1_2_8 === "_1_2_8_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1234,7 +1246,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_8_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_8 === '_1_2_8_3'}
+                              checked={this.state._1_2_8 === "_1_2_8_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1252,7 +1264,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_8_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_8 === '_1_2_8_4'}
+                              checked={this.state._1_2_8 === "_1_2_8_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1270,7 +1282,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_8_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_8 === '_1_2_8_5'}
+                              checked={this.state._1_2_8 === "_1_2_8_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1310,7 +1322,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_9_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_9 === '_1_2_9_1'}
+                              checked={this.state._1_2_9 === "_1_2_9_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1328,7 +1340,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_9_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_9 === '_1_2_9_2'}
+                              checked={this.state._1_2_9 === "_1_2_9_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1346,7 +1358,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_9_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_9 === '_1_2_9_3'}
+                              checked={this.state._1_2_9 === "_1_2_9_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1364,7 +1376,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_9_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_9 === '_1_2_9_4'}
+                              checked={this.state._1_2_9 === "_1_2_9_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1382,7 +1394,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_9_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_9 === '_1_2_9_5'}
+                              checked={this.state._1_2_9 === "_1_2_9_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1421,7 +1433,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_10_1"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_10 === '_1_2_10_1'}
+                              checked={this.state._1_2_10 === "_1_2_10_1"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1439,7 +1451,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_10_2"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_10 === '_1_2_10_2'}
+                              checked={this.state._1_2_10 === "_1_2_10_2"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1457,7 +1469,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_10_3"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_10 === '_1_2_10_3'}
+                              checked={this.state._1_2_10 === "_1_2_10_3"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1475,7 +1487,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_10_4"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_10 === '_1_2_10_4'}
+                              checked={this.state._1_2_10 === "_1_2_10_4"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1493,7 +1505,7 @@ class Step1 extends React.Component {
                               className="w-form-formradioinput radio-button table w-radio-input"
                               id="_1_2_10_5"
                               onChange={this.changeHandlerRadio}
-                              checked={this.state._1_2_10 === '_1_2_10_5'}
+                              checked={this.state._1_2_10 === "_1_2_10_5"}
                             />
                             <span className="checkbox-label hide w-form-label" />
                           </label>
@@ -1602,11 +1614,10 @@ class Step1 extends React.Component {
                             data-name="1-4yesno_1"
                             defaultValue="Radio"
                             name="1-4yesno_1"
-
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_1_4_1_1"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._1_4_1 === '_1_4_1_1'}
+                            checked={this.state._1_4_1 === "_1_4_1_1"}
                           />
                           <span className="checkbox-label w-form-label">
                             Ja
@@ -1618,11 +1629,10 @@ class Step1 extends React.Component {
                             data-name="1-4yesno_1"
                             defaultValue="Radio"
                             name="1-4yesno_1"
-
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_1_4_1_2"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._1_4_1 === '_1_4_1_2'}
+                            checked={this.state._1_4_1 === "_1_4_1_2"}
                           />
                           <span className="checkbox-label w-form-label">
                             Nee
@@ -1639,172 +1649,189 @@ class Step1 extends React.Component {
                       </div>
                     </div>
                   </div>
-                  {this.state._1_4_1 === "" ? "" : (
-                    this.state._1_4_1 === '_1_4_1_1' ? (
-                  <div>  
-                  <div className="form-row">
-                    <div className="form-row-header">
-                      <div className="label answertype yes">Indien ja</div>
-                      <h4>Hoe willen jullie dat aanpakken?</h4>
-                    </div>
-                    <div className="form-wrapper w-form">
-                      <form
-                        id="email-form"
-                        name="email-form"
-                        data-name="Email Form"
-                        className="form"
-                      >
-                        <textarea
-                          placeholder="Antwoord"
-                          maxLength={5000}
-                          name="field-2"
-                          data-name="Field 2"
-                          className="text-field field-textarea w-input"
-                          defaultValue={this.state._1_4_2}
-                          id="_1_4_2"
-                          onChange={this.changeHandler}
-                        />
-                      </form>
-                      <div className="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div className="w-form-fail">
-                        <div>
-                          Oops! Something went wrong while submitting the form.
+                  {this.state._1_4_1 === "" ? (
+                    ""
+                  ) : this.state._1_4_1 === "_1_4_1_1" ? (
+                    <div>
+                      <div className="form-row">
+                        <div className="form-row-header">
+                          <div className="label answertype yes">Indien ja</div>
+                          <h4>Hoe willen jullie dat aanpakken?</h4>
+                        </div>
+                        <div className="form-wrapper w-form">
+                          <form
+                            id="email-form"
+                            name="email-form"
+                            data-name="Email Form"
+                            className="form"
+                          >
+                            <textarea
+                              placeholder="Antwoord"
+                              maxLength={5000}
+                              name="field-2"
+                              data-name="Field 2"
+                              className="text-field field-textarea w-input"
+                              defaultValue={this.state._1_4_2}
+                              id="_1_4_2"
+                              onChange={this.changeHandler}
+                            />
+                          </form>
+                          <div className="w-form-done">
+                            <div>
+                              Thank you! Your submission has been received!
+                            </div>
+                          </div>
+                          <div className="w-form-fail">
+                            <div>
+                              Oops! Something went wrong while submitting the
+                              form.
+                            </div>
+                          </div>
                         </div>
                       </div>
+                      <div className="form-row">
+                        <div className="form-row-header">
+                          <div className="label answertype yes">Indien ja</div>
+                          <h4>Hebben jullie daar hulp bij nodig?</h4>
+                        </div>
+                        <div className="form-wrapper w-form">
+                          <form
+                            id="evi-form-1-4"
+                            name="wf-form-1-4"
+                            data-name="1 4"
+                            className="form _2-col-row"
+                          >
+                            <label className="radio-button-field _2col w-radio">
+                              <input
+                                type="radio"
+                                data-name="1-4yesno_1"
+                                defaultValue="Radio"
+                                name="1-4yesno_1"
+                                className="w-form-formradioinput radio-button w-radio-input"
+                                id="_1_4_3_1"
+                                onChange={this.changeHandlerRadio}
+                                checked={this.state._1_4_3 === "_1_4_3_1"}
+                              />
+                              <span className="checkbox-label w-form-label">
+                                Ja
+                              </span>
+                            </label>
+                            <label className="radio-button-field w-radio">
+                              <input
+                                type="radio"
+                                data-name="1-4yesno_1"
+                                defaultValue="Radio"
+                                name="1-4yesno_1"
+                                className="w-form-formradioinput radio-button w-radio-input"
+                                id="_1_4_3_2"
+                                onChange={this.changeHandlerRadio}
+                                checked={this.state._1_4_3 === "_1_4_3_2"}
+                              />
+                              <span className="checkbox-label w-form-label">
+                                Nee
+                              </span>
+                            </label>
+                          </form>
+                          <div className="w-form-done">
+                            <div>
+                              Thank you! Your submission has been received!
+                            </div>
+                          </div>
+                          <div className="w-form-fail">
+                            <div>
+                              Oops! Something went wrong while submitting the
+                              form.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {this.state._1_4_3 === "" ? (
+                        ""
+                      ) : this.state._1_4_3 === "_1_4_3_1" ? (
+                        <div className="form-row">
+                          <div className="form-row-header">
+                            <div className="label answertype yes">
+                              Indien ja
+                            </div>
+                            <h4>Wat is je hulpvraag?</h4>
+                          </div>
+                          <div className="form-wrapper w-form">
+                            <form
+                              id="email-form"
+                              name="email-form"
+                              data-name="Email Form"
+                              className="form"
+                            >
+                              <textarea
+                                placeholder="Antwoord"
+                                maxLength={5000}
+                                name="field-2"
+                                data-name="Field 2"
+                                className="text-field field-textarea w-input"
+                                defaultValue={this.state._1_4_4}
+                                id="_1_4_4"
+                                onChange={this.changeHandler}
+                              />
+                            </form>
+                            <div className="w-form-done">
+                              <div>
+                                Thank you! Your submission has been received!
+                              </div>
+                            </div>
+                            <div className="w-form-fail">
+                              <div>
+                                Oops! Something went wrong while submitting the
+                                form.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
-                  </div>
-                  <div className="form-row">
-                    <div className="form-row-header">
-                      <div className="label answertype yes">Indien ja</div>
-                      <h4>Hebben jullie daar hulp bij nodig?</h4>
-                    </div>
-                    <div className="form-wrapper w-form">
-                      <form
-                        id="evi-form-1-4"
-                        name="wf-form-1-4"
-                        data-name="1 4"
-                        className="form _2-col-row"
-                      >
-                        <label className="radio-button-field _2col w-radio">
-                          <input
-                            type="radio"
-                            data-name="1-4yesno_1"
-                            defaultValue="Radio"
-                            name="1-4yesno_1"
-                            className="w-form-formradioinput radio-button w-radio-input"
-                            id="_1_4_3_1"
-                            onChange={this.changeHandlerRadio}
-                            checked={this.state._1_4_3 === '_1_4_3_1'}
+                  ) : (
+                    <div className="form-row end">
+                      <div className="label answertype no">Indien nee</div>
+                      <div className="form-row-header">
+                        <h4>
+                          Kunnen jullie aangeven waarom jullie geen intentie
+                          hebben om jullie visie en/of beleid verder te
+                          ontwikkelen? Licht het antwoord toe.
+                        </h4>
+                      </div>
+                      <div className="form-wrapper w-form">
+                        <form
+                          id="email-form"
+                          name="email-form"
+                          data-name="Email Form"
+                          className="form"
+                        >
+                          <textarea
+                            placeholder="Antwoord"
+                            maxLength={5000}
+                            name="field-2"
+                            data-name="Field 2"
+                            className="text-field field-textarea w-input"
+                            defaultValue={this.state._1_4_5}
+                            id="_1_4_5"
+                            onChange={this.changeHandler}
                           />
-                          <span className="checkbox-label w-form-label">
-                            Ja
-                          </span>
-                        </label>
-                        <label className="radio-button-field w-radio">
-                          <input
-                            type="radio"
-                            data-name="1-4yesno_1"
-                            defaultValue="Radio"
-                            name="1-4yesno_1"
-                            className="w-form-formradioinput radio-button w-radio-input"
-                            id="_1_4_3_2"
-                            onChange={this.changeHandlerRadio}
-                            checked={this.state._1_4_3 === '_1_4_3_2'}
-                          />
-                          <span className="checkbox-label w-form-label">
-                            Nee
-                          </span>
-                        </label>
-                      </form>
-                      <div className="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div className="w-form-fail">
-                        <div>
-                          Oops! Something went wrong while submitting the form.
+                        </form>
+                        <div className="w-form-done">
+                          <div>
+                            Thank you! Your submission has been received!
+                          </div>
+                        </div>
+                        <div className="w-form-fail">
+                          <div>
+                            Oops! Something went wrong while submitting the
+                            form.
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  {this.state._1_4_3 === "" ? "" : (
-                    this.state._1_4_3 === '_1_4_3_1' ? (
-                  <div className="form-row">
-                    <div className="form-row-header">
-                      <div className="label answertype yes">Indien ja</div>
-                      <h4>Wat is je hulpvraag?</h4>
-                    </div>
-                    <div className="form-wrapper w-form">
-                      <form
-                        id="email-form"
-                        name="email-form"
-                        data-name="Email Form"
-                        className="form"
-                      >
-                        <textarea
-                          placeholder="Antwoord"
-                          maxLength={5000}
-                          name="field-2"
-                          data-name="Field 2"
-                          className="text-field field-textarea w-input"
-                          defaultValue={this.state._1_4_4}
-                          id="_1_4_4"
-                          onChange={this.changeHandler}
-                        />
-                      </form>
-                      <div className="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div className="w-form-fail">
-                        <div>
-                          Oops! Something went wrong while submitting the form.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  ) : (""))}
-                  </div>
-                  ) : ( 
-                   
-                  <div className="form-row end">
-                    <div className="label answertype no">Indien nee</div>
-                    <div className="form-row-header">
-                      <h4>
-                        Kunnen jullie aangeven waarom jullie geen intentie
-                        hebben om jullie visie en/of beleid verder te
-                        ontwikkelen? Licht het antwoord toe.
-                      </h4>
-                    </div>
-                    <div className="form-wrapper w-form">
-                      <form
-                        id="email-form"
-                        name="email-form"
-                        data-name="Email Form"
-                        className="form"
-                      >
-                        <textarea
-                          placeholder="Antwoord"
-                          maxLength={5000}
-                          name="field-2"
-                          data-name="Field 2"
-                          className="text-field field-textarea w-input"
-                          defaultValue={this.state._1_4_5}
-                          id="_1_4_5"
-                          onChange={this.changeHandler}
-                        />
-                      </form>
-                      <div className="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div className="w-form-fail">
-                        <div>
-                          Oops! Something went wrong while submitting the form.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  ))}
+                  )}
                 </div>
                 <div className="form-section">
                   <div className="form-section-header">
@@ -1836,7 +1863,7 @@ class Step1 extends React.Component {
                             className="w-form-formradioinput radio-button scenario w-radio-input"
                             id="_1_5_1"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._1_5 === '_1_5_1'}
+                            checked={this.state._1_5 === "_1_5_1"}
                           />
                           <div className="form-row-header scenario-header">
                             <h4 className="heading">Scenario 1</h4>
@@ -1861,8 +1888,7 @@ class Step1 extends React.Component {
                             className="w-form-formradioinput radio-button scenario w-radio-input"
                             id="_1_5_2"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._1_5 === '_1_5_2'}
-                            
+                            checked={this.state._1_5 === "_1_5_2"}
                           />
                           <div className="form-row-header scenario-header">
                             <h4>Scenario 2</h4>
@@ -1892,8 +1918,7 @@ class Step1 extends React.Component {
                             className="w-form-formradioinput radio-button scenario w-radio-input"
                             id="_1_5_3"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._1_5 === '_1_5_3'}
-                            
+                            checked={this.state._1_5 === "_1_5_3"}
                           />
                           <div className="form-row-header scenario-header">
                             <h4>Scenario 3</h4>
@@ -1921,8 +1946,7 @@ class Step1 extends React.Component {
                             className="w-form-formradioinput radio-button scenario w-radio-input"
                             id="_1_5_4"
                             onChange={this.changeHandlerRadio}
-                            checked={this.state._1_5 === '_1_5_4'}
-                            
+                            checked={this.state._1_5 === "_1_5_4"}
                           />
                           <div className="form-row-header scenario-header">
                             <h4>Scenario 4</h4>
@@ -2000,18 +2024,20 @@ class Step1 extends React.Component {
                     </div>
                   </div>
                 </div>
+                {this.state.error ? (
+                      <div className="snackbar red">
+                        <p className="paragraph-small snackbar-text">
+                          Sectie 1.2 alstublieft volledig invullen.
+                        </p>
+                        <br/>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                 <div className="cta-wrap form-bottom">
                   <div className="cta-btn-row first">
-{/* 
-                    <Link
-                    to={"/step02"}
-                    className="button cc-jumbo-button w-inline-block"
-                    onClick={this.submitHandler}
-                  >
-                    <div>Volgende stap</div>
-                  </Link> */}
 
-                  <Link
+                    <Link
                       to={"/step02"}
                       className="button cc-jumbo-button w-inline-block"
                       onClick={event => {
@@ -2020,8 +2046,6 @@ class Step1 extends React.Component {
                     >
                       <div>Volgende stap</div>
                     </Link>
-
-
                   </div>
                 </div>
               </div>

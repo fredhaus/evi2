@@ -7,6 +7,7 @@ class Step2 extends React.Component {
   state = {
     user: this.props.user,
     theposition: window.pageYOffset,
+    error: ""
   //   _4_1: "",
   //   _4_2_1: "",
   //   _4_2_2: "",
@@ -71,6 +72,23 @@ class Step2 extends React.Component {
 
   submitHandler = (event, target) => {
     event.preventDefault();
+    if (
+      this.state._4_2_1 === "" ||
+      this.state._4_2_2 === "" ||
+      this.state._4_2_3 === "" ||
+      this.state._4_2_4 === "" ||
+      this.state._4_2_5 === "" ||
+      this.state._4_2_6 === "" ||
+      this.state._4_2_7 === "" ||
+      this.state._4_2_8 === "" ||
+      this.state._4_2_9 === "" ||
+      this.state._4_2_10 === ""
+    ) {
+        this.setState({
+        error: "Section 4.2 not complete"
+        })
+        return
+    }
     axios
       .post("/api/datatransfer/step04push", this.state)
       .then(response => {
@@ -238,7 +256,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._4_1}
                           onChange={this.changeHandler}
                           id="_4_1"
                         />
@@ -1459,7 +1477,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._4_3}
                           onChange={this.changeHandler}
                           id="_4_3"
                         />
@@ -1560,7 +1578,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._4_4_2}
                           onChange={this.changeHandler}
                           id="_4_4_2"
                         />
@@ -1593,7 +1611,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._4_4_3}
                           onChange={this.changeHandler}
                           id="_4_4_3"
                         />
@@ -1681,7 +1699,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._4_4_5}
                           onChange={this.changeHandler}
                           id="_4_4_5"
                         />
@@ -1721,7 +1739,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._4_4_6}
                           onChange={this.changeHandler}
                           id="_4_4_6"
                         />
@@ -1905,7 +1923,7 @@ class Step2 extends React.Component {
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
-                          defaultValue={""}
+                          defaultValue={this.state._4_6}
                           onChange={this.changeHandler}
                           id="_4_6"
                         />
@@ -1921,27 +1939,21 @@ class Step2 extends React.Component {
                     </div>
                   </div>
                 </div>
+                {this.state.error ? (
+                      <div className="snackbar red">
+                        <p className="paragraph-small snackbar-text">
+                          Sectie 4.2 alstublieft volledig invullen.
+                        </p>
+                        <br/>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                 <div className="cta-wrap form-bottom">
                   <div className="cta-btn-row">
+                  <div className="submit-note-wrapper">
 
-                  {/* <Link
-                    to={"/step03"}
-                    className="link-block w-inline-block"
-                  >
-                      <img
-                        src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/small-arrowleft_kzja7a.svg"
-                        alt=""
-                        className="icon-arrow"
-                      />
-                      <div>Vorige stap</div>
-                      </Link>
-                    <Link
-                    to={"/results"}
-                    className="button cc-jumbo-button w-inline-block"
-                    onClick={this.submitHandler}
-                  >
-                    <div>Naar <strong>TERUGKOPPELING</strong></div>
-                  </Link> */}
+
 
                   <Link
                       to={"/step03"}
@@ -1957,6 +1969,8 @@ class Step2 extends React.Component {
                       />
                       <div>Vorige stap</div>
                     </Link>
+                    <p className="paragraph-small note cta">Dit is het eind van de vragenlijst.<br/>Zodra je op de knop &#x27;terugkoppeling&#x27; klikt is het niet meer mogelijk om terug te gaan.
+                </p>
                     <Link
                       to={"/results"}
                       className="button cc-jumbo-button w-inline-block"
@@ -1967,12 +1981,16 @@ class Step2 extends React.Component {
                       <div>Naar <strong>TERUGKOPPELING</strong></div>
                     </Link>
                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
+
+
+          
 
         <br />
         <br />

@@ -7,6 +7,7 @@ class Step2 extends React.Component {
   state = {
     user: this.props.user,
     theposition: window.pageYOffset,
+    error: ""
     // _2_1: "",
     // _2_2_1: "",
     // _2_2_2: "",
@@ -87,6 +88,23 @@ class Step2 extends React.Component {
 
   submitHandler = (event, target) => {
     event.preventDefault();
+    if (
+      this.state._2_2_1 === "" ||
+      this.state._2_2_2 === "" ||
+      this.state._2_2_3 === "" ||
+      this.state._2_2_4 === "" ||
+      this.state._2_2_5 === "" ||
+      this.state._2_2_6 === "" ||
+      this.state._2_2_7 === "" ||
+      this.state._2_2_8 === "" ||
+      this.state._2_2_9 === "" ||
+      this.state._2_2_10 === ""
+    ) {
+        this.setState({
+        error: "Section 2.2 not complete"
+        })
+        return
+    }
     axios
       .post("/api/datatransfer/step02push", this.state)
       .then(response => {
@@ -1978,6 +1996,16 @@ class Step2 extends React.Component {
                     </div>
                   </div>
                 </div>
+                {this.state.error ? (
+                      <div className="snackbar red">
+                        <p className="paragraph-small snackbar-text">
+                          Sectie 2.2 alstublieft volledig invullen.
+                        </p>
+                        <br/>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                 <div className="cta-wrap form-bottom">
                   <div className="cta-btn-row div-block">
                     <Link

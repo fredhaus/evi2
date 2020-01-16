@@ -1293,6 +1293,7 @@ class ResultsTab5 extends React.Component {
                     Verder kijken
                   </h3>
                 </div>
+                {this.state._4_4_1 !== "" ? (
                 <div className="form-row first">
                   <div className="form-row-header">
                     <h4>
@@ -1325,6 +1326,7 @@ class ResultsTab5 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ):("")}
                 {this.state._4_4_2 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
@@ -1355,6 +1357,7 @@ class ResultsTab5 extends React.Component {
                   </div>
                 </div>
                 ) : ""}
+                {this.state._4_4_4 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
                     <div className="label answertype yes">Indien ja</div>
@@ -1385,7 +1388,7 @@ class ResultsTab5 extends React.Component {
                     </div>
                   </div>
                 </div>
-
+                ):("")}
                 {this.state._4_4_5 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">

@@ -1333,6 +1333,7 @@ class ResultsTab3 extends React.Component {
                     Verder kijken
                   </h3>
                 </div>
+                {this.state._2_4_1 !== "" ? (
                 <div className="form-row first">
                   <div className="form-row-header">
                     <h4>
@@ -1364,6 +1365,7 @@ class ResultsTab3 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ):("")}
                 {this.state._2_4_2 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
@@ -1394,6 +1396,7 @@ class ResultsTab3 extends React.Component {
                   </div>
                 </div>
                 ) : ""}
+                {this.state._2_4_4 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
                     <div className="label answertype yes">Indien ja</div>
@@ -1401,6 +1404,7 @@ class ResultsTab3 extends React.Component {
                   </div>
                   <div className="form-wrapper">
                     <div className="form _2-col-row">
+                      <div className="radio-button-field static">
                       <div
                         className={
                           this.state._2_4_4 === "_2_4_4_1"
@@ -1411,6 +1415,7 @@ class ResultsTab3 extends React.Component {
                       
                       <div className="checkbox-label">Ja</div>
                     </div>
+                    <div className="radio-button-field static">
                     <div
                       className={
                         this.state._2_4_4 === "_2_4_4_2"
@@ -1418,10 +1423,12 @@ class ResultsTab3 extends React.Component {
                           : "radio-button-static marginright15"
                       }
                     />
-                  
                     <div className="checkbox-label">Nee</div>
+                    </div>
+                    </div>
                   </div>
                 </div>
+                ):("")}
               </div>
             </div>
             {this.state._2_4_5 !== "" ? (

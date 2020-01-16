@@ -465,6 +465,7 @@ class ResultsTab4 extends React.Component {
                     </div>
                   </div>
                 </div>
+                {this.state._3_1_3 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
                     <h4>
@@ -498,6 +499,7 @@ class ResultsTab4 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ) : ""}
                 {this.state._3_1_4 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
@@ -1460,6 +1462,7 @@ class ResultsTab4 extends React.Component {
                     Verder kijken
                   </h3>
                 </div>
+                {this.state._3_4_1 !== "" ? (
                 <div className="form-row first">
                   <div className="form-row-header">
                     <h4>
@@ -1492,6 +1495,7 @@ class ResultsTab4 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ):("")}
                 {this.state._3_4_2 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
@@ -1509,6 +1513,7 @@ class ResultsTab4 extends React.Component {
                   </div>
                 </div>
                 ) : ""}
+                {this.state._3_4_3 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
                     <div className="label answertype yes">Indien ja</div>
@@ -1539,6 +1544,7 @@ class ResultsTab4 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ):("")})
                 {this.state._3_4_4 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">

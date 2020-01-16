@@ -1633,7 +1633,6 @@ class Step2 extends React.Component {
                         <textarea
                           placeholder="Antwoord"
                           maxLength={5000}
-                          id="field-2"
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"

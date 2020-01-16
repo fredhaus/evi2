@@ -1553,7 +1553,6 @@ class Step1 extends React.Component {
                         <textarea
                           placeholder="Antwoord"
                           maxLength={5000}
-                          id="field-2"
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
@@ -1603,7 +1602,7 @@ class Step1 extends React.Component {
                             data-name="1-4yesno_1"
                             defaultValue="Radio"
                             name="1-4yesno_1"
-                            id="radio"
+
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_1_4_1_1"
                             onChange={this.changeHandlerRadio}
@@ -1619,7 +1618,7 @@ class Step1 extends React.Component {
                             data-name="1-4yesno_1"
                             defaultValue="Radio"
                             name="1-4yesno_1"
-                            id="radio"
+
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_1_4_1_2"
                             onChange={this.changeHandlerRadio}
@@ -1658,7 +1657,6 @@ class Step1 extends React.Component {
                         <textarea
                           placeholder="Antwoord"
                           maxLength={5000}
-                          id="field-2"
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
@@ -1695,7 +1693,6 @@ class Step1 extends React.Component {
                             data-name="1-4yesno_1"
                             defaultValue="Radio"
                             name="1-4yesno_1"
-                            id="radio"
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_1_4_3_1"
                             onChange={this.changeHandlerRadio}
@@ -1711,7 +1708,6 @@ class Step1 extends React.Component {
                             data-name="1-4yesno_1"
                             defaultValue="Radio"
                             name="1-4yesno_1"
-                            id="radio"
                             className="w-form-formradioinput radio-button w-radio-input"
                             id="_1_4_3_2"
                             onChange={this.changeHandlerRadio}
@@ -1749,7 +1745,6 @@ class Step1 extends React.Component {
                         <textarea
                           placeholder="Antwoord"
                           maxLength={5000}
-                          id="field-2"
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
@@ -1791,7 +1786,6 @@ class Step1 extends React.Component {
                         <textarea
                           placeholder="Antwoord"
                           maxLength={5000}
-                          id="field-2"
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"
@@ -1987,7 +1981,6 @@ class Step1 extends React.Component {
                         <textarea
                           placeholder="Antwoord"
                           maxLength={5000}
-                          id="field-2"
                           name="field-2"
                           data-name="Field 2"
                           className="text-field field-textarea w-input"

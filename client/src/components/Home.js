@@ -37,6 +37,14 @@ class Home extends React.Component {
 
   submitHandler = event => {
     event.preventDefault();
+    let reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+    if (this.state.Email !== "" && !reeamil.test(this.state.Email)) {
+      this.setState({
+        error:
+          "NOT A VALID EMAIL ADRESS. Please enter in this format: example@mail.com"
+      });
+      return;
+    }
     axios
       .post("/api/datatransfer/homepush", this.state)
       .then(response => {
@@ -47,8 +55,8 @@ class Home extends React.Component {
       .catch(error => {
         console.log(error.response.data.message);
         this.setState({
-        error: error.response.data.message
-        })
+          error: "Email adres al in gebruik."
+        });
       });
   };
 
@@ -386,12 +394,14 @@ class Home extends React.Component {
                     </div>
                   </div>
                   {this.state.error ? (
-                  <div className="snackbar red">
-                    <p className="paragraph-small snackbar-text">
-                      Email adres al in gebruik.
-                    </p>
-                  </div>
-                  ): ("")}
+                    <div className="snackbar red">
+                      <p className="paragraph-small snackbar-text">
+                        {this.state.error}
+                      </p>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 <Link

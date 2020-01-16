@@ -1325,6 +1325,7 @@ class ResultsTab5 extends React.Component {
                     </div>
                   </div>
                 </div>
+                {this.state._4_4_2 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
                     <div className="label answertype yes">Indien ja</div>
@@ -1338,6 +1339,8 @@ class ResultsTab5 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ) : ""}
+                {this.state._4_4_3 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
                     <div className="label answertype yes">Indien ja</div>
@@ -1351,6 +1354,7 @@ class ResultsTab5 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ) : ""}
                 <div className="form-row">
                   <div className="form-row-header">
                     <div className="label answertype yes">Indien ja</div>
@@ -1381,6 +1385,8 @@ class ResultsTab5 extends React.Component {
                     </div>
                   </div>
                 </div>
+
+                {this.state._4_4_5 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
                     <div className="label answertype yes">Indien ja</div>
@@ -1394,6 +1400,8 @@ class ResultsTab5 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ) : ""}
+                {this.state._4_4_6 !== "" ? (
                 <div className="form-row">
                   <div className="form-row-header">
                     <div className="label answertype no">Indien nee</div>
@@ -1411,6 +1419,7 @@ class ResultsTab5 extends React.Component {
                     </div>
                   </div>
                 </div>
+                ) : ""}
               </div>
               <div className="form-section">
                 <div className="form-section-header">
@@ -1428,14 +1437,9 @@ class ResultsTab5 extends React.Component {
                 <div className="form-row first">
                   <div className="form-wrapper form-scenario">
                     <div className="form">
+                    {this.state._4_5 === "_4_5_1" ? (
                       <div className="radio-button-field scenario _1">
-                        <div
-                          className={
-                            this.state._4_5 === "_4_5_1"
-                              ? "radio-button-static active"
-                              : "radio-button-static"
-                          }
-                        />
+                      <div className="radio-button-static scenario active"/>
                         <div className="form-row-header scenario-header">
                           <h4 className="heading">Scenario 1</h4>
                           <p>
@@ -1444,14 +1448,10 @@ class ResultsTab5 extends React.Component {
                           </p>
                         </div>
                       </div>
+                      ) : ("")}
+                      {this.state._4_5 === "_4_5_2" ? (
                       <div className="radio-button-field scenario _2">
-                        <div
-                          className={
-                            this.state._4_5 === "_4_5_2"
-                              ? "radio-button-static active"
-                              : "radio-button-static"
-                          }
-                        />
+                      <div className="radio-button-static scenario active"/>
                         <div className="form-row-header scenario-header">
                           <h4 className="heading">Scenario 2</h4>
                           <p>
@@ -1463,14 +1463,10 @@ class ResultsTab5 extends React.Component {
                           </p>
                         </div>
                       </div>
+                      ) : ("")}
+                      {this.state._4_5 === "_4_5_3" ? (
                       <div className="radio-button-field scenario _3">
-                        <div
-                          className={
-                            this.state._4_5 === "_4_5_3"
-                              ? "radio-button-static active"
-                              : "radio-button-static"
-                          }
-                        />
+                      <div className="radio-button-static scenario active"/>
                         <div className="form-row-header scenario-header">
                           <h4 className="heading">Scenario 3</h4>
                           <p>
@@ -1480,14 +1476,10 @@ class ResultsTab5 extends React.Component {
                           </p>
                         </div>
                       </div>
+                      ) : ("")}
+                      {this.state._4_5 === "_4_5_4" ? (
                       <div className="radio-button-field scenario _4">
-                        <div
-                          className={
-                            this.state._4_5 === "_4_5_4"
-                              ? "radio-button-static active"
-                              : "radio-button-static"
-                          }
-                        />
+                      <div className="radio-button-static scenario active"/>
                         <div className="form-row-header scenario-header">
                           <h4 className="heading">Scenario 4</h4>
                           <p>
@@ -1499,7 +1491,8 @@ class ResultsTab5 extends React.Component {
                           </p>
                         </div>
                       </div>
-                    </div>
+                      ) : ("")}
+                    </div>  
                   </div>
                 </div>
               </div>

@@ -119,6 +119,22 @@ class Step2 extends React.Component {
       });
   };
 
+  submitHandlerPrev = (event, target) => {
+    event.preventDefault();
+    axios
+      .post("/api/datatransfer/step02push", this.state)
+      .then(response => {
+        console.log("step02push Response", response.data);
+        this.props.history.push(target);
+      })
+      .catch(error => {
+        console.log(error.response.data.message);
+        // this.setState({
+        // error: error.response.data.message
+        // })
+      });
+  };
+
   consoleLog = () => {
     console.log("STATE: ", this.state);
   };
@@ -2012,7 +2028,7 @@ class Step2 extends React.Component {
                       to={"/step01"}
                       className="link-block w-inline-block"
                       onClick={event => {
-                        this.submitHandler(event, "/step01");
+                        this.submitHandlerPrev(event, "/step01");
                       }}
                     >
                       <img

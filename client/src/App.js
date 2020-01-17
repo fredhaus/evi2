@@ -10,6 +10,7 @@ import Step03 from "./components/Step03";
 import Step04 from "./components/Step04";
 import Results from "./components/Results";
 import pdfRender from "./components/pdfRender"
+import Overons from "./components/Overons";
 
 // {/* <link href="css/normalize.css" rel="stylesheet" type="text/css" />
 // <link href="css/webflow.css" rel="stylesheet" type="text/css" />
@@ -92,12 +93,19 @@ class App extends React.Component {
               </div>
             )}
           ></Route>
+          <Route
+            exact
+            path="/overons"
+            render={() => (
+              <div>
+                <Overons></Overons>
+              </div>
+            )}
+          ></Route>
            <Route path="/print/:Id" component={pdfRender} />
 
 
         </Switch>
-        <br/>      
-        <button onClick={this.consoleLog}>ConsoleLog APP</button>
       </div>
     );
   }

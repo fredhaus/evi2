@@ -103,6 +103,39 @@ class Step2 extends React.Component {
       });
   };
 
+  submitHandlerPrev = (event, target) => {
+    event.preventDefault();
+    if (
+      this.state._4_2_1 === "" ||
+      this.state._4_2_2 === "" ||
+      this.state._4_2_3 === "" ||
+      this.state._4_2_4 === "" ||
+      this.state._4_2_5 === "" ||
+      this.state._4_2_6 === "" ||
+      this.state._4_2_7 === "" ||
+      this.state._4_2_8 === "" ||
+      this.state._4_2_9 === "" ||
+      this.state._4_2_10 === ""
+    ) {
+        this.setState({
+        error: "Section 4.2 not complete"
+        })
+        return
+    }
+    axios
+      .post("/api/datatransfer/step04push", this.state)
+      .then(response => {
+        console.log("step04push Response", response.data);
+        this.props.history.push(target);
+      })
+      .catch(error => {
+        console.log(error.response.data.message);
+        // this.setState({
+        // error: error.response.data.message
+        // })
+      });
+  };
+
   consoleLog = () => {
     console.log("STATE: ", this.state);
   };
@@ -1959,7 +1992,7 @@ class Step2 extends React.Component {
                       to={"/step03"}
                       className="link-block w-inline-block"
                       onClick={event => {
-                        this.submitHandler(event, "/step03");
+                        this.submitHandlerPrev(event, "/step03");
                       }}
                     >
                       <img

@@ -38,10 +38,18 @@ class Home extends React.Component {
   submitHandler = event => {
     event.preventDefault();
     let reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+    if (this.state.Email === "") {
+      this.setState({
+        error:
+        "We hebben je email nodig."
+      });
+      return;
+    }
+
     if (this.state.Email !== "" && !reeamil.test(this.state.Email)) {
       this.setState({
         error:
-          "NOT A VALID EMAIL ADRESS. Please enter in this format: example@mail.com"
+          "Email adres is ongeldig. Graag dit formaat aanhouden: voorbeeld@mail.nl"
       });
       return;
     }
@@ -84,12 +92,12 @@ class Home extends React.Component {
             </a>
             <div className="menu">
               <nav role="navigation" className="navigation-items w-nav-menu">
-                <a
-                  href="over.html"
+                <Link
+                  to={"/overons"}
                   className="navigation-item whitetext w-nav-link"
                 >
                   over ons
-                </a>
+                </Link>
               </nav>
               <div className="menu-button w-nav-button">
                 <img
@@ -394,11 +402,13 @@ class Home extends React.Component {
                     </div>
                   </div>
                   {this.state.error ? (
+                    <div class="snackbar-wrapper home">
                     <div className="snackbar red">
                       <p className="paragraph-small snackbar-text">
                         {this.state.error}
                       </p>
                     </div>
+                     </div>
                   ) : (
                     ""
                   )}
@@ -406,6 +416,7 @@ class Home extends React.Component {
 
                 <Link
                   to={"/step01"}
+                  type="submit"
                   className="button cc-jumbo-button w-inline-block"
                   onClick={this.submitHandler}
                 >
@@ -415,12 +426,6 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.consoleLog}>ConsoleLog</button>
       </div>
     );
   }

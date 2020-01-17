@@ -1,10 +1,11 @@
 import React from "react";
 import { withRouter, useParams } from "react-router-dom";
-import ResultsTab1 from "./ResultsTab1";
-import ResultsTab2 from "./ResultsTab2Step1";
-import ResultsTab3 from "./ResultsTab3Step2";
-import ResultsTab4 from "./ResultsTab4Step3";
-import ResultsTab5 from "./ResultsTab5Step4";
+import axios from "axios";
+import PDFResultsTab1 from "./PDFResultsTab1";
+import PDFResultsTab2 from "./PDFResultsTab2Step1";
+import PDFResultsTab3 from "./PDFResultsTab3Step2";
+import PDFResultsTab4 from "./PDFResultsTab4Step3";
+import PDFResultsTab5 from "./PDFResultsTab5Step4";
 class paramsTest extends React.Component {
   state = {};
 
@@ -13,195 +14,74 @@ class paramsTest extends React.Component {
       match: { params }
     } = this.props;
     this.setState({
-      id: params.Id
+      user: params.Id
     });
-    console.log(params.Id);
+  }
+
+  componentDidMount() {
+    axios.post("/api/datatransfer/results", this.state).then(response => {
+      this.setState({
+        ...response.data[0]
+      });
+      console.log("State pdf render: ", this.state);
+    });
   }
 
   render() {
     return (
       <div>
-        <div className="mobilemessage">
-          <div className="popup-block">
-            <img
-              src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/moble-desktop_oaegjn.svg"
-              alt=""
-              className="step-icon popup-image"
-            />
-            <h4>
-              Please open on a bigger screen such as tablet or laptop to fill in
-              the form
-            </h4>
-          </div>
-        </div>
-        <div
-          data-collapse="medium"
-          data-animation="default"
-          data-duration={400}
-          className="navigation sub-nav results w-nav"
-        >
-          <div className="navigation-wrap sub results">
-            <div className="logo-link w-nav-brand">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
-                width={108}
-                alt=""
-                className="logo-image"
-              />
-            </div>
-          </div>
-          <div style={{ opacity: 0 }} className="nav-bg" />
-        </div>
-        <div className="section hero subpage steps results">
+        <div className="section hero subpage steps results pdf">
           <div className="container">
+            <div className="navigation-wrap sub results pdf">
+              <a href="../index.html" className="logo-link w-nav-brand">
+                <img
+                  src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/Logo2_cxbg8z.svg"
+                  width={108}
+                  alt=""
+                  className="logo-image"
+                />
+              </a>
+            </div>
             <div className="intro-text results">
               <img
                 src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step1_uvi01u.svg"
                 alt=""
                 className="step-icon hide"
               />
-              <h1 className="heading-jumbo">Resultaten</h1>
+              <div className="details-wrap">
+                <h1 className="heading-jumbo">Resultaten</h1>
+              </div>
               <div className="paragraph-light">
-                Hier vind je de resultaten van jouw school. Op deze pagina vind
-                je de samenvatting. Voor de uitgebreide resultaten, analyse en
-                advies per onderwerp kun je op de tabbladen klikken.
+                Hier vind je de resultaten van jouw school. In dit rapport vind
+                je de samenvatting. Kijk daaronder voor de uitgebreide
+                resultaten, analyse en advies per onderwerp.
                 <br />
               </div>
-              <div className="note-box results">
-                <div className="note-box-results-wrapper">
-                  <img
-                    src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862223/evi2_120120/email-small_vtqbzr.svg"
-                    alt=""
-                    className="results-note-icon"
-                  />
-                  <div>We sturen het rapport ook naar je e-mail.</div>
+              <div className="note-box results pdf">
+                <div className="label">Naam school</div>
+                <div className="paragraph-small note">
+                  {this.state.NaamSchool}
                 </div>
+                <div className="divider note pdf" />
+                <div className="label">Naam invuller</div>
+                <div className="paragraph-small note">
+                  {this.state.NaamInvuller}
+                </div>
+                <div className="divider note pdf" />
+                <div className="label">Functie invuller</div>
+                <div className="paragraph-small note">{this.state.Functie}</div>
+                <div className="divider note pdf" />
+                <div className="label">E-mail</div>
+                <div className="paragraph-small note">{this.state.Email}</div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          data-w-id="d6cb0154-cd02-de5b-804e-26aafaeb5fe1"
-          className="section-content"
-        >
-          <div className="section results">
-            <div
-              data-duration-in={300}
-              data-duration-out={100}
-              className="tab-wrapper w-tabs"
-            >
-              <div
-                style={{ height: "90PX" }}
-                className="navigation results-tab w-tab-menu"
-              >
-                {this.state.tab === "1" ? (
-                  <a
-                    datatab="Tab 1"
-                    id="Tab 1"
-                    className="tab-link w-inline-block w-tab-link w--current"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Totaal</div>
-                  </a>
-                ) : (
-                  <a
-                    datatab="Tab 1"
-                    id="Tab 1"
-                    className="tab-link w-inline-block w-tab-link"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Totaal</div>
-                  </a>
-                )}
-
-                {this.state.tab === "2" ? (
-                  <a
-                    datatab="Tab 2"
-                    id="Tab 2"
-                    className="tab-link w-inline-block w-tab-link w--current"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Visie</div>
-                  </a>
-                ) : (
-                  <a
-                    datatab="Tab 2"
-                    id="Tab 2"
-                    className="tab-link w-inline-block w-tab-link"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Visie</div>
-                  </a>
-                )}
-
-                {this.state.tab === "3" ? (
-                  <a
-                    datatab="Tab 3"
-                    id="Tab 3"
-                    className="tab-link w-inline-block w-tab-link w--current"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Deskundigheid</div>
-                  </a>
-                ) : (
-                  <a
-                    datatab="Tab 3"
-                    id="Tab 3"
-                    className="tab-link w-inline-block w-tab-link"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Deskundigheid</div>
-                  </a>
-                )}
-
-                {this.state.tab === "4" ? (
-                  <a
-                    datatab="Tab 4"
-                    id="Tab 4"
-                    className="tab-link w-inline-block w-tab-link w--current"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Programma</div>
-                  </a>
-                ) : (
-                  <a
-                    datatab="Tab 4"
-                    id="Tab 4"
-                    className="tab-link w-inline-block w-tab-link"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Programma</div>
-                  </a>
-                )}
-
-                {this.state.tab === "5" ? (
-                  <a
-                    datatab="Tab 5"
-                    id="Tab 5"
-                    className="tab-link w-inline-block w-tab-link w--current"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Samenwerking</div>
-                  </a>
-                ) : (
-                  <a
-                    datatab="Tab 5"
-                    id="Tab 5"
-                    className="tab-link w-inline-block w-tab-link"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Samenwerking</div>
-                  </a>
-                )}
-              </div>
-              <ResultsTab1 user={this.state.id} />
-              <ResultsTab2 user={this.state.id} />
-              <ResultsTab3 user={this.state.id} />
-              <ResultsTab4 user={this.state.id} />
-              <ResultsTab5 user={this.state.id} />
-            </div>
-          </div>
-        </div>
+        <PDFResultsTab1 user={this.state.user} />
+        <PDFResultsTab2 user={this.state.user} />
+        <PDFResultsTab3 user={this.state.user} />
+        <PDFResultsTab4 user={this.state.user} />
+        <PDFResultsTab5 user={this.state.user} />
       </div>
     );
   }

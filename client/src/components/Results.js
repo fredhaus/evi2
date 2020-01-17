@@ -12,14 +12,31 @@ class Step2 extends React.Component {
   state = {
     user: this.props.user,
     theposition: window.pageYOffset,
-    tab: "1"
+    tab: "1",
+    loading: true
   };
   componentDidMount() {
     window.scrollTo(0, 0);
-    axios.post("/api/datatransfer/results/pdf", this.state).then(response => {console.log(response)})
-    console.log("WEBHOOK HAS BEEN TRIGGERED FRONTEND")
+    axios.post("/api/datatransfer/results/pdf", this.state).then(response => {
+      console.log(response);
+    });
+    console.log("WEBHOOK HAS BEEN TRIGGERED FRONTEND");
+    
+    this.loadinghandler()
+
   }
 
+   loadinghandler = async () => {
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    await sleep(2800).then(() => {
+      this.setState({
+        loading: false
+      })
+    });
+  }
   changeHandler = event => {
     let id = event.target.id;
     let value = event.target.value;
@@ -71,196 +88,232 @@ class Step2 extends React.Component {
   render() {
     return (
       <div>
-        <div className="mobilemessage">
-          <div className="popup-block">
-            <img
-              src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/moble-desktop_oaegjn.svg"
-              alt=""
-              className="step-icon popup-image"
-            />
-            <h4>
-              Please open on a bigger screen such as tablet or laptop to fill in
-              the form
-            </h4>
-          </div>
-        </div>
-        <div
-          data-collapse="medium"
-          data-animation="default"
-          data-duration={400}
-          className="navigation sub-nav results w-nav"
-        >
-          <div className="navigation-wrap sub results">
-            <div className="logo-link w-nav-brand">
+        {this.state.loading ? (
+          <div className="loader">
+            <div className="loader-content">
               <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
-                width={108}
+                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/loader_ok66oe.gif"
                 alt=""
-                className="logo-image"
+                className="loader-gif"
               />
+              <h4>Loading your results ...</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur</p>
             </div>
           </div>
-          <div style={{ opacity: 0 }} className="nav-bg" />
-        </div>
-        <div className="section hero subpage steps results">
-          <div className="container">
-            <div className="intro-text results">
-              <img
-                src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step1_uvi01u.svg"
-                alt=""
-                className="step-icon hide"
-              />
-              <h1 className="heading-jumbo">Resultaten</h1>
-              <div className="paragraph-light">
-                Hier vind je de resultaten van jouw school. Op deze pagina vind
-                je de samenvatting. Voor de uitgebreide resultaten, analyse en
-                advies per onderwerp kun je op de tabbladen klikken.
-                <br />
+        ) : (
+          <div>
+            <div className="mobilemessage">
+              <div className="popup-block">
+                <img
+                  src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862224/evi2_120120/moble-desktop_oaegjn.svg"
+                  alt=""
+                  className="step-icon popup-image"
+                />
+                <h4>
+                  Please open on a bigger screen such as tablet or laptop to
+                  fill in the form
+                </h4>
               </div>
-              <div className="note-box results">
-                <div className="note-box-results-wrapper">
+            </div>
+            <div
+              data-collapse="medium"
+              data-animation="default"
+              data-duration={400}
+              className="navigation sub-nav results w-nav"
+            >
+              <div className="navigation-wrap sub results">
+                <div className="logo-link w-nav-brand">
                   <img
-                    src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862223/evi2_120120/email-small_vtqbzr.svg"
+                    src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
+                    width={108}
                     alt=""
-                    className="results-note-icon"
+                    className="logo-image"
                   />
-                  <div>We sturen het rapport ook naar je e-mail.</div>
+                </div>
+              </div>
+              <div style={{ opacity: 0 }} className="nav-bg" />
+            </div>
+            <div className="section hero subpage steps results">
+              <div className="container">
+                <div className="intro-text results">
+                  <img
+                    src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/step1_uvi01u.svg"
+                    alt=""
+                    className="step-icon hide"
+                  />
+                  <h1 className="heading-jumbo">Resultaten</h1>
+                  <div className="paragraph-light">
+                    Hier vind je de resultaten van jouw school. Op deze pagina
+                    vind je de samenvatting. Voor de uitgebreide resultaten,
+                    analyse en advies per onderwerp kun je op de tabbladen
+                    klikken.
+                    <br />
+                  </div>
+                  <div className="note-box results">
+                    <div className="note-box-results-wrapper">
+                      <img
+                        src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862223/evi2_120120/email-small_vtqbzr.svg"
+                        alt=""
+                        className="results-note-icon"
+                      />
+                      <div>We sturen het rapport ook naar je e-mail.</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div
-          data-w-id="d6cb0154-cd02-de5b-804e-26aafaeb5fe1"
-          className="section-content"
-        >
-          <div className="section results">
             <div
-              data-duration-in={300}
-              data-duration-out={100}
-              className="tab-wrapper w-tabs"
+              data-w-id="d6cb0154-cd02-de5b-804e-26aafaeb5fe1"
+              className="section-content"
             >
-              <div
-                style={{ height: "90PX" }}
-                className="navigation results-tab w-tab-menu"
-              >
-                {this.state.tab === "1" ? (
-                  <a
-                    datatab="Tab 1"
-                    id="Tab 1"
-                    className="tab-link w-inline-block w-tab-link w--current"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Totaal</div>
-                  </a>
-                ) : (
-                  <a
-                    datatab="Tab 1"
-                    id="Tab 1"
-                    className="tab-link w-inline-block w-tab-link"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Totaal</div>
-                  </a>
-                )}
-
-                  {this.state.tab === "2" ? (
-                  <a
-                    datatab="Tab 2"
-                    id="Tab 2"
-                    className="tab-link w-inline-block w-tab-link w--current"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Visie</div>
-                  </a>
-                ) : (
-                  <a
-                    datatab="Tab 2"
-                    id="Tab 2"
-                    className="tab-link w-inline-block w-tab-link"
-                    onClick={this.tabHandler}
-                  >
-                    <div>Visie</div>
-                  </a>
-                )}
-
-              {this.state.tab === "3" ? (
-                <a
-                datatab="Tab 3"
-                id="Tab 3"
-                className="tab-link w-inline-block w-tab-link w--current"
-                onClick={this.tabHandler}
-              >
-                <div>Deskundigheid</div>
-              </a>
-                ) : (
-                  <a
-                  datatab="Tab 3"
-                  id="Tab 3"
-                  className="tab-link w-inline-block w-tab-link"
-                  onClick={this.tabHandler}
+              <div className="section results">
+                <div
+                  data-duration-in={300}
+                  data-duration-out={100}
+                  className="tab-wrapper w-tabs"
                 >
-                  <div>Deskundigheid</div>
-                </a>
-                )}
+                  <div
+                    style={{ height: "90PX" }}
+                    className="navigation results-tab w-tab-menu"
+                  >
+                    {this.state.tab === "1" ? (
+                      <a
+                        datatab="Tab 1"
+                        id="Tab 1"
+                        className="tab-link w-inline-block w-tab-link w--current"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Totaal</div>
+                      </a>
+                    ) : (
+                      <a
+                        datatab="Tab 1"
+                        id="Tab 1"
+                        className="tab-link w-inline-block w-tab-link"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Totaal</div>
+                      </a>
+                    )}
 
-                {this.state.tab === "4" ? (
-                <a
-                datatab="Tab 4"
-                id="Tab 4"
-                className="tab-link w-inline-block w-tab-link w--current"
-                onClick={this.tabHandler}
-              >
-                <div>Programma</div>
-              </a>
-                ) : (
-                  <a
-                  datatab="Tab 4"
-                  id="Tab 4"
-                  className="tab-link w-inline-block w-tab-link"
-                  onClick={this.tabHandler}
-                >
-                  <div>Programma</div>
-                </a>
-                )}
+                    {this.state.tab === "2" ? (
+                      <a
+                        datatab="Tab 2"
+                        id="Tab 2"
+                        className="tab-link w-inline-block w-tab-link w--current"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Visie</div>
+                      </a>
+                    ) : (
+                      <a
+                        datatab="Tab 2"
+                        id="Tab 2"
+                        className="tab-link w-inline-block w-tab-link"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Visie</div>
+                      </a>
+                    )}
 
-                {this.state.tab === "5" ? (
-                <a
-                datatab="Tab 5"
-                id="Tab 5"
-                className="tab-link w-inline-block w-tab-link w--current"
-                onClick={this.tabHandler}
-              >
-                <div>Samenwerking</div>
-              </a>
-                ) : (
-                  <a
-                  datatab="Tab 5"
-                  id="Tab 5"
-                  className="tab-link w-inline-block w-tab-link"
-                  onClick={this.tabHandler}
-                >
-                  <div>Samenwerking</div>
-                </a>
-                )}
+                    {this.state.tab === "3" ? (
+                      <a
+                        datatab="Tab 3"
+                        id="Tab 3"
+                        className="tab-link w-inline-block w-tab-link w--current"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Deskundigheid</div>
+                      </a>
+                    ) : (
+                      <a
+                        datatab="Tab 3"
+                        id="Tab 3"
+                        className="tab-link w-inline-block w-tab-link"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Deskundigheid</div>
+                      </a>
+                    )}
 
-              </div>
-              <div className="w-tab-content">
-                {/* {this.state.tab === "1" ? <ResultsTab1 allResults="moin"/> : ""}  */}
-                {this.state.tab === "1" ? <ResultsTab1 user={this.state.user}/> : ""} 
-                {this.state.tab === "2" ? <ResultsTab2 user={this.state.user}/> : ""}
-                {this.state.tab === "3" ? <ResultsTab3 user={this.state.user}/> : ""}
-                {this.state.tab === "4" ? <ResultsTab4 user={this.state.user}/> : ""}
-                {this.state.tab === "5" ? <ResultsTab5 user={this.state.user}/> : ""}
+                    {this.state.tab === "4" ? (
+                      <a
+                        datatab="Tab 4"
+                        id="Tab 4"
+                        className="tab-link w-inline-block w-tab-link w--current"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Programma</div>
+                      </a>
+                    ) : (
+                      <a
+                        datatab="Tab 4"
+                        id="Tab 4"
+                        className="tab-link w-inline-block w-tab-link"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Programma</div>
+                      </a>
+                    )}
+
+                    {this.state.tab === "5" ? (
+                      <a
+                        datatab="Tab 5"
+                        id="Tab 5"
+                        className="tab-link w-inline-block w-tab-link w--current"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Samenwerking</div>
+                      </a>
+                    ) : (
+                      <a
+                        datatab="Tab 5"
+                        id="Tab 5"
+                        className="tab-link w-inline-block w-tab-link"
+                        onClick={this.tabHandler}
+                      >
+                        <div>Samenwerking</div>
+                      </a>
+                    )}
+                  </div>
+                  <div className="w-tab-content">
+                    {/* {this.state.tab === "1" ? <ResultsTab1 allResults="moin"/> : ""}  */}
+                    {this.state.tab === "1" ? (
+                      <ResultsTab1 user={this.state.user} />
+                    ) : (
+                      ""
+                    )}
+                    {this.state.tab === "2" ? (
+                      <ResultsTab2 user={this.state.user} />
+                    ) : (
+                      ""
+                    )}
+                    {this.state.tab === "3" ? (
+                      <ResultsTab3 user={this.state.user} />
+                    ) : (
+                      ""
+                    )}
+                    {this.state.tab === "4" ? (
+                      <ResultsTab4 user={this.state.user} />
+                    ) : (
+                      ""
+                    )}
+                    {this.state.tab === "5" ? (
+                      <ResultsTab5 user={this.state.user} />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <button onClick={this.consoleLog}>ConsoleLog</button>
           </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.consoleLog}>ConsoleLog</button>
+        )}
       </div>
     );
   }

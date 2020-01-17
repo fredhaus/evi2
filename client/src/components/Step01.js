@@ -2025,20 +2025,31 @@ class Step1 extends React.Component {
                   </div>
                 </div>
                 {this.state.error ? (
+                  <div class="snackbar-wrapper">
                       <div className="snackbar red">
                         <p className="paragraph-small snackbar-text">
                           Sectie 1.2 alstublieft volledig invullen.
                         </p>
                         <br/>
                       </div>
+                      </div>
                     ) : (
                       ""
                     )}
                 <div className="cta-wrap form-bottom">
                   <div className="cta-btn-row first">
+                  {/* <div class="snackbar-wrapper">
+                      <div className="snackbar red">
+                        <p className="paragraph-small snackbar-text">
+                          Sectie 1.2 alstublieft volledig invullen.
+                        </p>
+                        <br/>
+                      </div>
+                      </div> */}
 
                     <Link
                       to={"/step02"}
+                      type="submit"
                       className="button cc-jumbo-button w-inline-block"
                       onClick={event => {
                         this.submitHandler(event, "/step02");
@@ -2052,13 +2063,6 @@ class Step1 extends React.Component {
             </div>
           </div>
         </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.consoleLog}>ConsoleLog</button>
-        <button onClick={this.getResults}>RESULTS</button>
       </div>
     );
   }

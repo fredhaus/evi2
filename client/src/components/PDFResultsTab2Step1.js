@@ -343,9 +343,8 @@ class ResultsTab2 extends React.Component {
                           <p>
                             Sluit je aan bij een regionaal netwerken,
                             bijvoorbeeld een scenario 3-
-                            <a href="#" className="link">
                               scholennetwerk
-                            </a>{" "}
+                            {" "}
                             .
                           </p>
                         </li>

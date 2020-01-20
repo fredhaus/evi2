@@ -1108,7 +1108,7 @@ class ResultsTab1 extends React.Component {
                   <h4 className="heading">Visie Scenario 3</h4>
                   <p>
                     De school heeft een eigen visie op cultuuronderwijs die als
-                    apart onderdeel is opgenomen in een schoolplan. De visie is
+                    apart onderdeel is opgenomen in een kwaliteitssysteem. De visie is
                     mede-ontwikkeld door het team en zij beslissen mee.
                   </p>
                 </div>

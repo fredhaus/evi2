@@ -687,7 +687,7 @@ class Step2 extends React.Component {
                         className="table-row"
                       >
                         <p>
-                          Leerlingen een zo breed mogelijk pallet aan culturele
+                          Leerlingen een zo breed mogelijk palet aan culturele
                           en kunstzinnige activiteiten laten maken en meemaken
                         </p>
                         <div

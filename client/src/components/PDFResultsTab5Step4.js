@@ -1458,7 +1458,7 @@ class ResultsTab5 extends React.Component {
                         <div className="form-row-header scenario-header">
                           <h4 className="heading">Scenario 2</h4>
                           <p>
-                            De school werkt structureel samen met externe
+                            De school werkt regelmatig samen met externe
                             partners en – deskundigen. De inhoudelijke keuzes
                             liggen bij de externe partner (afnemen
                             cultuuraanbod).

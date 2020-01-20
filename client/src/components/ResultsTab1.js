@@ -439,7 +439,7 @@ class ResultsTab1 extends React.Component {
                   >
                     <p>
                       Onze leerlingen leren betekenisgeven aan en reflecteren op
-                      zichzelf en de wereld;
+                      zichzelf en de wereld
                     </p>
                     <div
                       id="w-node-b820c8d3cbb8-7eda5bea"
@@ -493,7 +493,7 @@ class ResultsTab1 extends React.Component {
                   >
                     <p>
                       Onze leerlingen zelfsturend zijn en{" "}
-                      <em>vanuit hun eigen vraag en interesse</em> werken;
+                      <em>vanuit hun eigen vraag en interesse</em> werken
                     </p>
                     <div
                       id="w-node-30ed3d8e92c0-7eda5bea"
@@ -547,7 +547,7 @@ class ResultsTab1 extends React.Component {
                   >
                     <p>
                       Onze leerlingen <em>zich verbonden voelen</em> met hun
-                      eigen omgeving en achtergrond;
+                      eigen omgeving en achtergrond
                     </p>
                     <div
                       id="w-node-51a3722a7efb-7eda5bea"
@@ -603,7 +603,7 @@ class ResultsTab1 extends React.Component {
                       Onze leerlingen een{" "}
                       <em>
                         zo breed mogelijk palet aan culturele en kunstzinnige
-                        activiteiten maken en meemaken;
+                        activiteiten maken en meemaken
                       </em>
                     </p>
                     <div
@@ -658,7 +658,7 @@ class ResultsTab1 extends React.Component {
                   >
                     <p>
                       Aspecten zoals bijvoorbeeld taalontwikkeling of
-                      sociaal-emotioneel ontwikkeling worden versterkt;
+                      sociaal-emotioneel ontwikkeling worden versterkt
                     </p>
                     <div
                       id="w-node-650f10f933d5-7eda5bea"
@@ -715,7 +715,7 @@ class ResultsTab1 extends React.Component {
                       <em> ambachtelijke vaardigheden</em> ontwikkelen in
                       uiteenlopende media (materialen, ICT-middelen, voorwerpen,
                       instrumenten, gesproken en geschreven taal, het (eigen)
-                      lichaam);
+                      lichaam)
                     </p>
                     <div
                       id="w-node-86c46d0d07d2-7eda5bea"
@@ -769,7 +769,7 @@ class ResultsTab1 extends React.Component {
                   >
                     <p>
                       Onze leerlingen hun artistiek, creatief en innovatief
-                      vermogen ontwikkelen;
+                      vermogen ontwikkelen
                     </p>
                     <div
                       id="w-node-8203673dc8ee-7eda5bea"
@@ -823,7 +823,7 @@ class ResultsTab1 extends React.Component {
                   >
                     <p>
                       Onze leerlingen <em>zich kunnen uiten</em> door artistieke
-                      expressie en dit kunnen presenteren;
+                      expressie en dit kunnen presenteren
                     </p>
                     <div
                       id="w-node-7000f004fee2-7eda5bea"
@@ -878,7 +878,7 @@ class ResultsTab1 extends React.Component {
                     <p>
                       Aandacht is voor <em>vakoverstijgend </em>
                       verbinden met andere vakken, leergebieden, overkoepelende
-                      vaardigheden en thema’s;
+                      vaardigheden en thema’s
                     </p>
                     <div
                       id="w-node-f7549d7bcb5d-7eda5bea"
@@ -932,7 +932,7 @@ class ResultsTab1 extends React.Component {
                   >
                     <p>
                       Wij onze leerlingen een onderzoekende en open houding
-                      meegeven;
+                      meegeven
                     </p>
                     <div
                       id="w-node-4d968a92b913-7eda5bea"

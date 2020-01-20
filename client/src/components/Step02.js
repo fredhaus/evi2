@@ -1394,7 +1394,7 @@ class Step2 extends React.Component {
                       >
                         <p>
                           Onze leerlingen door cultuuronderwijs stimuleren om
-                          met een nieuwsgierige, onderzoekende en open houding
+                          met een onderzoekende en open houding
                           in de wereld te staan
                         </p>
                         <div

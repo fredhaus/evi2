@@ -1931,7 +1931,7 @@ class Step1 extends React.Component {
                             <p>
                               De school heeft een eigen visie op
                               cultuuronderwijs die als apart onderdeel is
-                              opgenomen in een schoolplan. De visie is
+                              opgenomen in een kwaliteitssysteem. De visie is
                               mede-ontwikkeld door het team en zij beslissen
                               mee.
                             </p>

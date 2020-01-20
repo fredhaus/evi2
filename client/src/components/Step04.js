@@ -1929,10 +1929,7 @@ class Step2 extends React.Component {
                           <div className="form-row-header scenario-header">
                             <h4>Scenario 4</h4>
                             <p>
-                              De school legt de afspraken over samenwerking met
-                              externe partners en deskundigen vast. Deze is
-                              gericht op een optimale aansluiting van inhoud van
-                              het programma bij de leerlingen.
+                              De school onderzoekt met externe partners en deskundigen hoe de inhoud van het cultuuronderwijs zo optimaal mogelijk aansluit bij de culturele ontwikkeling van alle leerlingen. De school legt de afspraken over samenwerking met externe partners en deskundigen vast. 
                             </p>
                           </div>
                           <span

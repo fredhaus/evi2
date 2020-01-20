@@ -96,8 +96,8 @@ class Step2 extends React.Component {
                 alt=""
                 className="loader-gif"
               />
-              <h4>Loading your results ...</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur</p>
+              <h4>Eventjes geduld, </h4>
+              <p>de terugkoppeling wordt nu aangemaakt!</p>
             </div>
           </div>
         ) : (

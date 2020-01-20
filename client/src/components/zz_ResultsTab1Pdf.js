@@ -590,7 +590,7 @@ class ResultsTab1 extends React.Component {
                     <p>
                       Onze leerlingen een{" "}
                       <em>
-                        zo breed mogelijk pallet aan culturele en kunstzinnige
+                        zo breed mogelijk palet aan culturele en kunstzinnige
                         activiteiten maken en meemaken;
                       </em>
                     </p>

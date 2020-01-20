@@ -71,7 +71,7 @@ class ResultsTab3 extends React.Component {
             </div>
             <div className="paragraph-light">
               Hoe staat het met de deskundigheid op het gebied van
-              cultuuronderwijs binnen jouw school? Wat hebben jullie in huis??
+              cultuuronderwijs binnen jouw school? Wat hebben jullie in huis?
               <br />
             </div>
           </div>

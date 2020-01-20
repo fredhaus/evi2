@@ -1235,7 +1235,7 @@ class ResultsTab2 extends React.Component {
                           <p>
                             De school heeft een eigen visie op cultuuronderwijs
                             die als apart onderdeel is opgenomen in een
-                            schoolplan. De visie is mede-ontwikkeld door het
+                            kwaliteitssysteem. De visie is mede-ontwikkeld door het
                             team en zij beslissen mee.
                           </p>
                         </div>

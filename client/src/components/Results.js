@@ -307,11 +307,7 @@ class Step2 extends React.Component {
                 </div>
               </div>
             </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <button onClick={this.consoleLog}>ConsoleLog</button>
+
           </div>
         )}
       </div>

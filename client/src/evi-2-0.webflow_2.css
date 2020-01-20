@@ -1517,6 +1517,8 @@ figcaption {
   text-decoration: underline;
 }
 
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
 .hero-image {
   position: static;
   left: 0%;

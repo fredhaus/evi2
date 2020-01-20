@@ -35,7 +35,7 @@ class Step2 extends React.Component {
     axios
       .post("/api/datatransfer/results", this.state)
       .then(response => {
-        console.log("Results", response.data);
+        // console.log("Results", response.data);
         this.setState({
           user: this.props.user, ...response.data[2]
         });
@@ -53,7 +53,7 @@ class Step2 extends React.Component {
   changeHandlerRadio_1_1_2 = event => {
     // console.log(this.state)
     let id = event.target.id;
-    console.log(id);
+    // console.log(id);
     this.setState({
       _1_1_2: id
     });
@@ -108,11 +108,11 @@ class Step2 extends React.Component {
     axios
       .post("/api/datatransfer/step02push", this.state)
       .then(response => {
-        console.log("step02push Response", response.data);
+        // console.log("step02push Response", response.data);
         this.props.history.push(target);
       })
       .catch(error => {
-        console.log(error.response.data.message);
+        // console.log(error.response.data.message);
         // this.setState({
         // error: error.response.data.message
         // })
@@ -124,11 +124,11 @@ class Step2 extends React.Component {
     axios
       .post("/api/datatransfer/step02push", this.state)
       .then(response => {
-        console.log("step02push Response", response.data);
+        // console.log("step02push Response", response.data);
         this.props.history.push(target);
       })
       .catch(error => {
-        console.log(error.response.data.message);
+        // console.log(error.response.data.message);
         // this.setState({
         // error: error.response.data.message
         // })
@@ -2068,12 +2068,6 @@ class Step2 extends React.Component {
           </div>
         </div>
         {/* [if lte IE 9]><![endif] */}
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.consoleLog}>ConsoleLog</button>
       </div>
     );
   }

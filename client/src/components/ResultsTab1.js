@@ -1465,13 +1465,7 @@ class ResultsTab1 extends React.Component {
                       ) : ("")}
                     </div>
                   </div>
-                
-                
-        <br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.consoleLog}>ConsoleLog Tab1</button>
+              
       </div>
     );
   }

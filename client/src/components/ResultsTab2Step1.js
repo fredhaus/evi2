@@ -1292,11 +1292,7 @@ class ResultsTab2 extends React.Component {
             </div>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <button onClick={this.consoleLog}>ConsoleLog Tab2</button>
+
       </div>
     );
   }

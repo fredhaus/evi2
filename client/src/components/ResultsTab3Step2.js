@@ -8,10 +8,10 @@ class ResultsTab3 extends React.Component {
   };
 
   componentDidMount() {
-    console.log("resultTab2 state", this.state);
+    
     window.scrollTo(0, 0);
     axios.post("/api/datatransfer/results", this.state).then(response => {
-      console.log("Results Tab3", response.data);
+      
 
       let _2_2_1 = parseInt(response.data[2]._2_2_1.split("_").pop());
       let _2_2_2 = parseInt(response.data[2]._2_2_2.split("_").pop());

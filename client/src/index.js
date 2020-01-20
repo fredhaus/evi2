@@ -12,7 +12,7 @@ import "./webflow.css"
 import "./evi-2-0.webflow_2.css"
 
 
-document.getElementById('root').innerText = 'Charging Up ...'
+document.getElementById('root').innerText = 'Eventjes geduld ...'
 document.title = "EVI 2.0"
 
 // makes sure the entire App only gets rendered AFTER we know if the user is logged in

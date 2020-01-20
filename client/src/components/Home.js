@@ -35,13 +35,18 @@ class Home extends React.Component {
     });
   };
 
+  snackbarClose = () => {
+    this.setState({
+      error: ""
+    })
+  }
+
   submitHandler = event => {
     event.preventDefault();
     let reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
     if (this.state.Email === "") {
       this.setState({
-        error:
-        "We hebben je email nodig."
+        error: "We hebben je email nodig."
       });
       return;
     }
@@ -401,19 +406,25 @@ class Home extends React.Component {
                       Oops! Something went wrong while submitting the form.
                     </div>
                   </div>
-                  {this.state.error ? (
-                    <div class="snackbar-wrapper home">
-                    <div className="snackbar red">
-                      <p className="paragraph-small snackbar-text">
-                        {this.state.error}
-                      </p>
+
+                </div>
+                {this.state.error ? (
+                    <div className="snackbar-wrapper home">
+                      <div className="snackbar red">
+                        <p className="paragraph-small snackbar-text">
+                          {this.state.error}
+                        </p>
+                        <a
+                          onClick={this.snackbarClose}
+                          className="icon-close_wrapper w-inline-block"
+                        >
+                          <img src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/small-close_lxq29o.svg" alt="" className="icon-close"/>
+                        </a>
+                      </div>
                     </div>
-                     </div>
                   ) : (
                     ""
                   )}
-                </div>
-
                 <Link
                   to={"/step01"}
                   type="submit"

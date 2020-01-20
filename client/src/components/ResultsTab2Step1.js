@@ -455,7 +455,7 @@ class ResultsTab2 extends React.Component {
                         <div className="radio-button-field static">
                         <div
                           className={
-                            this.state._1_1_1 === "_1_1_1_1"
+                            this.state._1_1_2 === "_1_1_2_1"
                               ? "radio-button-static marginright15 active"
                               : "radio-button-static marginright15"
                           }
@@ -465,7 +465,7 @@ class ResultsTab2 extends React.Component {
                         <div className="radio-button-field static">
                         <div
                           className={
-                            this.state._1_1_1 === "_1_1_1_2"
+                            this.state._1_1_2 === "_1_1_2_2"
                               ? "radio-button-static marginright15 active"
                               : "radio-button-static marginright15"
                           }

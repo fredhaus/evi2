@@ -9,7 +9,7 @@ import "typeface-roboto";
 import "./App.css";
 import "./normalize.css"
 import "./webflow.css"
-import "./evi-2-0.webflow.css"
+import "./evi-2-0.webflow_2.css"
 
 
 document.getElementById('root').innerText = 'Charging Up ...'

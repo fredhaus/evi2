@@ -140,6 +140,12 @@ class Step2 extends React.Component {
     console.log("STATE: ", this.state);
   };
 
+  snackbarClose = () => {
+    this.setState({
+      error: ""
+    })
+  }
+
   render() {
     return (
       <div>
@@ -1973,15 +1979,23 @@ class Step2 extends React.Component {
                   </div>
                 </div>
                 {this.state.error ? (
+                    <div className="snackbar-wrapper steps">
                       <div className="snackbar red">
                         <p className="paragraph-small snackbar-text">
-                          Sectie 4.2 alstublieft volledig invullen.
+                        Sectie 4.2 alstublieft volledig invullen.
+
                         </p>
-                        <br/>
+                        <a
+                          onClick={this.snackbarClose}
+                          className="icon-close_wrapper w-inline-block"
+                        >
+                          <img src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578862225/evi2_120120/small-close_lxq29o.svg" alt="" className="icon-close"/>
+                        </a>
                       </div>
-                    ) : (
-                      ""
-                    )}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 <div className="cta-wrap form-bottom">
                   <div className="cta-btn-row">
                   <div className="submit-note-wrapper">

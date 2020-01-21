@@ -1337,7 +1337,7 @@ class ResultsTab3 extends React.Component {
                 <div className="form-row first">
                   <div className="form-row-header">
                     <h4>
-                      Heeft jullie school de intentie voor meer deskundigheid?
+                      Heeft jullie school de intentie om meer deskundigheid voor cultuuronderwijs binnen de school te halen?
                     </h4>
                   </div>
                   <div className="form-wrapper">

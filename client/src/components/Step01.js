@@ -124,8 +124,7 @@ class Step1 extends React.Component {
               className="step-icon popup-image"
             />
             <h4>
-              Please open on a bigger screen such as tablet or laptop to fill in
-              the form
+              Om het formulier in te vullen heb je een groter scherm nodig, zoals bijv. een tablet of notebook.
             </h4>
           </div>
         </div>

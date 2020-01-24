@@ -87,7 +87,7 @@ class Home extends React.Component {
           className="navigation w-nav"
         >
           <div className="navigation-wrap">
-            <a href="index.html" className="logo-link w-nav-brand w--current">
+            <a href="https://evi2.herokuapp.com" className="logo-link w-nav-brand w--current">
               <img
                 src="https://res.cloudinary.com/dsov6emwq/image/upload/v1578511729/Logo2_rkkhki.svg"
                 width={108}

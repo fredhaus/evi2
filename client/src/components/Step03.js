@@ -42,6 +42,10 @@ class Step2 extends React.Component {
         // console.log("Results", response.data);
         this.setState({
           user: this.props.user, ...response.data[3]
+        }, () => {
+          if(!this.state.user){
+            this.props.history.push("/");
+          }
         });
       })
   }

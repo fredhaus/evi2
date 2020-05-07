@@ -7,24 +7,23 @@ import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 import "typeface-roboto";
 import "./App.css";
-import "./normalize.css"
-import "./webflow.css"
-import "./evi-2-0.webflow_2.css"
+
 
 
 document.getElementById('root').innerText = 'Eventjes geduld ...'
-document.title = "EVI 2.0"
+document.title = "EVI 2.1 Sandbox"
 
 // makes sure the entire App only gets rendered AFTER we know if the user is logged in
-axios.get('/api/auth/checkuser').then(res => {
+// axios.get('/api/auth/checkuser').then(res => {
   ReactDOM.render(
     <BrowserRouter>
-      <App user={res.data.userDoc} />
+      <App/>
     </BrowserRouter>
     , document.getElementById('root'));
-}).catch(err => {
-  alert('backend not running or /checkuser route not defined !')
-})
+    
+// }).catch(err => {
+//   alert('backend not running or /checkuser route not defined !')
+// })
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

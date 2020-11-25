@@ -9,7 +9,6 @@ const User = require("../models/user");
 router.post("/imageupload", function(req, res, next) {
   const dataUri = req.body.dataUri;
 
-  // console.log(username)
 
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD,
@@ -35,7 +34,7 @@ router.post("/imageupload", function(req, res, next) {
     res.status(200).json(imageUrl);
 
     try{
-    User.findByIdAndUpdate(req.user._id, {headPic: imageUrl}) /// FUNKTIONIERT NICHT DIE SCHEIßE HIER
+    User.findByIdAndUpdate(req.user._id, {headPic: imageUrl}) 
     }
     catch(error) {
       console.error(error)
@@ -45,31 +44,3 @@ router.post("/imageupload", function(req, res, next) {
 })
 
 module.exports = router;
-
-// cloudinary.config({
-//   cloud_name: "dok2ttvhu",
-//   api_key: "254219857648234",
-//   api_secret: "wa3rRnlI4tNxtyCMa0y-HlKe2JM"
-// });
-
-// // cloudinary.image("transp.png", {
-// //   gravity: "g_auto",
-// //   crop: "fill"
-// // });
-
-// var dataURI = this.state.dataUri
-// var uploadStr = 'data:image/jpeg;base64,' + dataURI;
-
-// cloudinary.uploader.upload(uploadStr, {
-//     overwrite: true,
-//     invalidate: true,
-//     crop: "fill"
-// },
-//     function (error, result) {
-//         console.log(result)
-//     });
-
-// // UPLOAD TO CLOUDINARY ROUND BUT FROM BACKEND
-// // UPLOAD TO CLOUDINARY ROUND BUT FROM BACKEND
-// // UPLOAD TO CLOUDINARY ROUND BUT FROM BACKEND
-// #

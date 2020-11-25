@@ -45,7 +45,6 @@ router.post("/signup", (req, res, next) => {
     const aNewUser = new User({
       username: username,
       password: hashPass,
-      headPic: "https://res.cloudinary.com/dok2ttvhu/image/upload/v1574844969/default_face_jaglaw.png"
     });
 
     aNewUser.save().then(newUser => {
@@ -66,20 +65,19 @@ router.post('/login', (req, res, next) => {
     }
 
     if (!theUser) {
-      // "failureDetails" contains the error messages
-      // from our logic in "LocalStrategy" { message: '...' }.
+
       res.status(401).json(failureDetails);
       return;
     }
 
-    // save user in session
+    
     req.login(theUser, (err) => {
       if (err) {
         res.status(500).json({ message: 'Session save went bad.' });
         return;
       }
 
-      // We are now logged in (that's why we can also send req.user)
+      
       res.status(200).json(theUser);
     });
   })(req, res, next);

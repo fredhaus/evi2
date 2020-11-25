@@ -312,7 +312,7 @@ router.post("/results/pdf", function(req, res, next) {
   const Email = req.body.user;
 
   axios.get(
-    `https://hooks.zapier.com/hooks/catch/1031215/oh3wtdl?email=${Email}`, // jonas
+    `process.env.ZAPHOOK`, // jonas
     {}
   );
   res.status(200).json("200");
